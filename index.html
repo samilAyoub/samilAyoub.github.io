@@ -21,29 +21,6 @@
     <style>
         html { scroll-behavior: smooth; }
     </style>
-
-    <!-- Simple Analytics Tracking (Optional - use your preferred tool) -->
-    <script>
-        // Track plan clicks
-        function trackPlanClick(planName, planPrice) {
-            console.log(`Plan clicked: ${planName} - ${planPrice}`);
-            
-            // If you use Google Analytics:
-            // gtag('event', 'plan_click', { plan_name: planName, plan_price: planPrice });
-            
-            // If you use Plausible:
-            // plausible('PlanClick', { props: { plan: planName, price: planPrice } });
-            
-            // Store in localStorage for your own tracking
-            const clicks = JSON.parse(localStorage.getItem('plan_clicks') || '[]');
-            clicks.push({
-                plan: planName,
-                price: planPrice,
-                timestamp: new Date().toISOString()
-            });
-            localStorage.setItem('plan_clicks', JSON.stringify(clicks));
-        }
-    </script>
 </head>
 <body class="font-sans bg-white">
     
