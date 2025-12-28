@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadFast - Find LinkedIn Leads in Seconds</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        @keyframes scroll-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        
+        .animate-scroll-left {
+            animation: scroll-left 40s linear infinite;
+        }
+        
+        .animate-scroll-right {
+            animation: scroll-right 40s linear infinite;
+        }
+        
+        .testimonial-row:hover .animate-scroll-left,
+        .testimonial-row:hover .animate-scroll-right {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white">
+    
+    <script>
+        // Embedded leads database
+        const leadsDatabase = [
+            { id: 1, name: "Michael Chen", title: "CTO", company: "TechFlow", industry: "SaaS", location: "San Francisco, CA", employees: "50-200", email: "m.chen@techflow.io", phone: "+1 415-555-0123", verified: true, lastActive: "2 days ago", img: 60 },
+            { id: 2, name: "Sarah Martinez", title: "VP Engineering", company: "DataSync", industry: "Data Analytics", location: "San Francisco, CA", employees: "200-500", email: "sarah.m@datasync.com", phone: "+1 415-555-0234", verified: true, lastActive: "1 week ago", img: 32 },
+            { id: 3, name: "David Kim", title: "Chief Technology Officer", company: "CloudBase", industry: "Cloud Computing", location: "San Francisco, CA", employees: "500-1000", email: "d.kim@cloudbase.io", phone: "+1 415-555-0345", verified: true, lastActive: "3 days ago", img: 8 },
+            { id: 4, name: "Emily Rodriguez", title: "Head of Product", company: "AI Innovations", industry: "Artificial Intelligence", location: "San Francisco, CA", employees: "50-200", email: "e.rodriguez@aiinnovations.com", phone: "+1 415-555-0456", verified: true, lastActive: "5 days ago", img: 45 },
+            { id: 5, name: "James Wilson", title: "VP of Sales", company: "SalesTech Pro", industry: "Sales Software", location: "San Francisco, CA", employees: "200-500", email: "j.wilson@salestechpro.com", phone: "+1 415-555-0567", verified: true, lastActive: "1 day ago", img: 22 },
+            { id: 6, name: "Lisa Chen", title: "CMO", company: "MarketBoost", industry: "Marketing Tech", location: "New York, NY", employees: "100-500", email: "l.chen@marketboost.io", phone: "+1 212-555-0123", verified: true, lastActive: "4 days ago", img: 38 },
+            { id: 7, name: "Alex Turner", title: "CEO", company: "FinanceFlow", industry: "FinTech", location: "New York, NY", employees: "200-500", email: "a.turner@financeflow.com", phone: "+1 212-555-0234", verified: true, lastActive: "2 days ago", img: 55 },
+            { id: 8, name: "Rachel Foster", title: "VP Marketing", company: "GrowthEngine", industry: "Marketing", location: "New York, NY", employees: "50-200", email: "r.foster@growthengine.io", phone: "+1 212-555-0345", verified: true, lastActive: "1 week ago", img: 41 },
+            { id: 9, name: "Tom Bradley", title: "Director of Sales", company: "Enterprise Solutions", industry: "B2B SaaS", location: "New York, NY", employees: "500-1000", email: "t.bradley@enterprisesol.com", phone: "+1 212-555-0456", verified: false, lastActive: "2 weeks ago", img: 57 },
+            { id: 10, name: "Nina Patel", title: "Head of Partnerships", company: "ConnectHub", industry: "Collaboration", location: "New York, NY", employees: "100-500", email: "n.patel@connecthub.io", phone: "+1 212-555-0567", verified: true, lastActive: "3 days ago", img: 25 },
+            { id: 11, name: "Chris Anderson", title: "VP Operations", company: "CloudOps", industry: "DevOps", location: "Seattle, WA", employees: "200-500", email: "c.anderson@cloudops.com", phone: "+1 206-555-0123", verified: true, lastActive: "5 days ago", img: 12 },
+            { id: 12, name: "Jessica Wong", title: "Director of Business Development", company: "ScaleUp Tech", industry: "SaaS", location: "Seattle, WA", employees: "100-500", email: "j.wong@scaleuptech.io", phone: "+1 206-555-0234", verified: true, lastActive: "1 day ago", img: 70 },
+            { id: 13, name: "Marcus Johnson", title: "Chief Revenue Officer", company: "RevenueMax", industry: "Sales Tech", location: "Seattle, WA", employees: "50-200", email: "m.johnson@revenuemax.com", phone: "+1 206-555-0345", verified: true, lastActive: "6 days ago", img: 51 },
+            { id: 14, name: "Sophie Martinez", title: "VP Customer Success", company: "ClientFirst", industry: "Customer Support", location: "Austin, TX", employees: "100-500", email: "s.martinez@clientfirst.io", phone: "+1 512-555-0123", verified: true, lastActive: "2 days ago", img: 19 },
+            { id: 15, name: "Daniel Cooper", title: "Head of Growth", company: "GrowthLabs", industry: "Marketing", location: "Austin, TX", employees: "50-200", email: "d.cooper@growthlabs.com", phone: "+1 512-555-0234", verified: true, lastActive: "4 days ago", img: 33 },
+            { id: 16, name: "Amanda Lee", title: "VP Product", company: "ProductHub", industry: "Product Management", location: "Austin, TX", employees: "200-500", email: "a.lee@producthub.io", phone: "+1 512-555-0345", verified: false, lastActive: "1 week ago", img: 44 },
+            { id: 17, name: "Kevin Zhang", title: "CTO", company: "TechVentures", industry: "Enterprise Software", location: "Boston, MA", employees: "500-1000", email: "k.zhang@techventures.com", phone: "+1 617-555-0123", verified: true, lastActive: "3 days ago", img: 63 },
+            { id: 18, name: "Laura Bennett", title: "VP Engineering", company: "CodeCraft", industry: "Developer Tools", location: "Boston, MA", employees: "100-500", email: "l.bennett@codecraft.io", phone: "+1 617-555-0234", verified: true, lastActive: "1 day ago", img: 29 },
+            { id: 19, name: "Ryan Murphy", title: "Director of Sales", company: "SalesForce Pro", industry: "Sales Software", location: "Boston, MA", employees: "200-500", email: "r.murphy@salesforcepro.com", phone: "+1 617-555-0345", verified: true, lastActive: "5 days ago", img: 15 },
+            { id: 20, name: "Michelle Park", title: "CMO", company: "BrandBoost", industry: "Digital Marketing", location: "Los Angeles, CA", employees: "50-200", email: "m.park@brandboost.io", phone: "+1 213-555-0123", verified: true, lastActive: "2 days ago", img: 36 }
+        ];
+        
+        const searchSuggestions = [
+            "Find CTOs at SaaS companies in San Francisco",
+            "Find VPs at FinTech startups in New York",
+            "Find CMOs at marketing agencies",
+            "Find Sales Directors in Boston",
+            "Find CEOs at AI companies",
+            "Find Head of Product at e-commerce companies"
+        ];
+        
+        let currentLeads = [];
+        let allLeads = [];
+        let selectedLeads = new Set();
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, initializing...');
+            allLeads = [...leadsDatabase];
+            currentLeads = [...leadsDatabase];
+            renderResults();
+            setupEventListeners();
+        });
+        
+        function setupEventListeners() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') performSearch();
+                });
+                searchInput.addEventListener('focus', showSearchSuggestions);
+                
+                // Close suggestions when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!searchInput.contains(e.target)) {
+                        document.getElementById('searchSuggestions').classList.add('hidden');
+                    }
+                });
+            }
+            
+            const filters = ['filterLocation', 'filterIndustry', 'filterTitle', 'filterSize', 'filterVerified'];
+            filters.forEach(filterId => {
+                const el = document.getElementById(filterId);
+                if (el) el.addEventListener('change', applyFilters);
+            });
+        }
+        
+        function showSearchSuggestions(e) {
+            e.stopPropagation();
+            const container = document.getElementById('searchSuggestions');
+            container.innerHTML = searchSuggestions.map(suggestion => `
+                <div class="search-suggestion px-4 py-2 text-sm hover:bg-slate-50 cursor-pointer" onclick="useSuggestion('${suggestion}')">
+                    🔍 ${suggestion}
+                </div>
+            `).join('');
+            container.classList.remove('hidden');
+        }
+        
+        function useSuggestion(suggestion) {
+            document.getElementById('searchInput').value = suggestion;
+            document.getElementById('searchSuggestions').classList.add('hidden');
+            performSearch();
+        }
+        
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            document.getElementById('searchSuggestions').classList.add('hidden');
+            
+            console.log('Searching for:', query);
+            showLoading();
+            
+            setTimeout(() => {
+                if (!query.trim()) {
+                    currentLeads = [...allLeads];
+                } else {
+                    currentLeads = allLeads.filter(lead => {
+                        return lead.name.toLowerCase().includes(query) ||
+                               lead.title.toLowerCase().includes(query) ||
+                               lead.company.toLowerCase().includes(query) ||
+                               lead.industry.toLowerCase().includes(query) ||
+                               lead.location.toLowerCase().includes(query);
+                    });
+                }
+                
+                console.log('Found leads:', currentLeads.length);
+                applyFilters();
+                hideLoading();
+            }, 600);
+        }
+        
+        function applyFilters() {
+            let filtered = [...currentLeads];
+            
+            const location = document.getElementById('filterLocation').value;
+            const industry = document.getElementById('filterIndustry').value;
+            const title = document.getElementById('filterTitle').value;
+            const size = document.getElementById('filterSize').value;
+            const verified = document.getElementById('filterVerified').checked;
+            
+            if (location) filtered = filtered.filter(l => l.location.includes(location));
+            if (industry) filtered = filtered.filter(l => l.industry === industry);
+            if (title) filtered = filtered.filter(l => l.title.toLowerCase().includes(title.toLowerCase()));
+            if (size) filtered = filtered.filter(l => l.employees === size);
+            if (verified) filtered = filtered.filter(l => l.verified === true);
+            
+            currentLeads = filtered;
+            renderResults();
+        }
+        
+        function clearFilters() {
+            document.getElementById('filterLocation').value = '';
+            document.getElementById('filterIndustry').value = '';
+            document.getElementById('filterTitle').value = '';
+            document.getElementById('filterSize').value = '';
+            document.getElementById('filterVerified').checked = false;
+            
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if (!query.trim()) {
+                currentLeads = [...allLeads];
+            } else {
+                currentLeads = allLeads.filter(lead => {
+                    return lead.name.toLowerCase().includes(query) ||
+                           lead.title.toLowerCase().includes(query) ||
+                           lead.company.toLowerCase().includes(query) ||
+                           lead.industry.toLowerCase().includes(query) ||
+                           lead.location.toLowerCase().includes(query);
+                });
+            }
+            renderResults();
+        }
+        
+        function renderResults() {
+            const container = document.getElementById('resultsContainer');
+            const countEl = document.getElementById('resultCount');
+            const selectedCountEl = document.getElementById('selectedCount');
+            
+            if (!container || !countEl || !selectedCountEl) {
+                console.error('Required elements not found');
+                return;
+            }
+            
+            countEl.textContent = currentLeads.length;
+            selectedCountEl.textContent = selectedLeads.size;
+            
+            if (currentLeads.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12">
+                        <div class="text-6xl mb-4">🔍</div>
+                        <div class="text-xl font-semibold text-slate-700 mb-2">No leads found</div>
+                        <div class="text-slate-500">Try adjusting your search or filters</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = currentLeads.map((lead) => `
+                <div class="flex items-center justify-between p-4 border ${selectedLeads.has(lead.id) ? 'border-blue-400 bg-blue-50' : 'border-slate-200'} rounded-lg hover:border-blue-300 transition-all">
+                    <div class="flex items-center gap-4 flex-1">
+                        <input type="checkbox" 
+                               ${selectedLeads.has(lead.id) ? 'checked' : ''}
+                               onchange="toggleLead(${lead.id})" 
+                               class="w-5 h-5 text-blue-600 rounded">
+                        <img src="https://i.pravatar.cc/150?img=${lead.img}" class="w-14 h-14 rounded-full border-2 border-white shadow-md">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2">
+                                <div class="font-semibold text-lg">${lead.name}</div>
+                                ${lead.verified ? '<span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-semibold">✓ Verified</span>' : ''}
+                            </div>
+                            <div class="text-sm text-slate-600">${lead.title} at ${lead.company}</div>
+                            <div class="flex items-center gap-3 mt-1 text-xs text-slate-500">
+                                <span>📍 ${lead.location}</span>
+                                <span>•</span>
+                                <span>💼 ${lead.industry}</span>
+                            </div>
+                            <div class="text-sm text-blue-600 font-medium mt-2">✉️ ${lead.email}</div>
+                        </div>
+                    </div>
+                    <button onclick="exportSingleLead(${lead.id})" class="px-4 py-2 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                        Export
+                    </button>
+                </div>
+            `).join('');
+            
+            console.log('Rendered', currentLeads.length, 'leads');
+        }
+        
+        function toggleLead(leadId) {
+            if (selectedLeads.has(leadId)) {
+                selectedLeads.delete(leadId);
+            } else {
+                selectedLeads.add(leadId);
+            }
+            renderResults();
+        }
+        
+        function selectAll() {
+            currentLeads.forEach(lead => selectedLeads.add(lead.id));
+            renderResults();
+        }
+        
+        function deselectAll() {
+            selectedLeads.clear();
+            renderResults();
+        }
+        
+        function exportSingleLead(leadId) {
+            const lead = leadsDatabase.find(l => l.id === leadId);
+            const csv = 'Name,Title,Company,Industry,Location,Email,Phone,Verified\\n' + 
+                       `"${lead.name}","${lead.title}","${lead.company}","${lead.industry}","${lead.location}","${lead.email}","${lead.phone}","${lead.verified}"`;
+            downloadCSV(csv, `${lead.name.replace(/ /g, '_')}_lead.csv`);
+            showNotification(1);
+        }
+        
+        function exportSelectedLeads() {
+            if (selectedLeads.size === 0) {
+                alert('Please select at least one lead to export');
+                return;
+            }
+            let csv = 'Name,Title,Company,Industry,Location,Email,Phone,Verified\\n';
+            selectedLeads.forEach(leadId => {
+                const lead = leadsDatabase.find(l => l.id === leadId);
+                csv += `"${lead.name}","${lead.title}","${lead.company}","${lead.industry}","${lead.location}","${lead.email}","${lead.phone}","${lead.verified}"\\n`;
+            });
+            downloadCSV(csv, `leadfast_selected_${selectedLeads.size}_leads.csv`);
+            showNotification(selectedLeads.size);
+        }
+        
+        function exportAllLeads() {
+            let csv = 'Name,Title,Company,Industry,Location,Email,Phone,Verified\\n';
+            currentLeads.forEach(lead => {
+                csv += `"${lead.name}","${lead.title}","${lead.company}","${lead.industry}","${lead.location}","${lead.email}","${lead.phone}","${lead.verified}"\\n`;
+            });
+            downloadCSV(csv, `leadfast_export_${currentLeads.length}_leads.csv`);
+            showNotification(currentLeads.length);
+        }
+        
+        function downloadCSV(csv, filename) {
+            const dataUrl = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+            const a = document.createElement('a');
+            a.href = dataUrl;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+        
+        function showNotification(count) {
+            const notification = document.getElementById('exportNotification');
+            document.getElementById('exportCount').textContent = count;
+            notification.classList.remove('hidden');
+            notification.classList.add('flex');
+            setTimeout(() => {
+                notification.classList.add('hidden');
+                notification.classList.remove('flex');
+            }, 3000);
+        }
+        
+        function showLoading() {
+            const spinner = document.getElementById('loadingSpinner');
+            const btn = document.getElementById('searchBtn');
+            if (spinner) spinner.classList.remove('hidden');
+            if (btn) btn.disabled = true;
+        }
+        
+        function hideLoading() {
+            const spinner = document.getElementById('loadingSpinner');
+            const btn = document.getElementById('searchBtn');
+            if (spinner) spinner.classList.add('hidden');
+            if (btn) btn.disabled = false;
+        }
+        
+        function toggleFAQ(num) {
+            const content = document.getElementById(`faq-content-${num}`);
+            const icon = document.getElementById(`faq-icon-${num}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            const closeIcon = document.getElementById('closeIcon');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-slate-200 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white text-xl">🎯</div>
+                <span class="text-2xl font-bold">LeadFast</span>
+            </div>
+            
+            <!-- Desktop Menu - Centered -->
+            <nav class="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+                <a href="#demo" class="text-slate-700 hover:text-blue-600 font-medium transition-colors">Demo</a>
+                <a href="#features" class="text-slate-700 hover:text-blue-600 font-medium transition-colors">Features</a>
+                <a href="#testimonials" class="text-slate-700 hover:text-blue-600 font-medium transition-colors">Testimonials</a>
+                <a href="#faq" class="text-slate-700 hover:text-blue-600 font-medium transition-colors">FAQ</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <a href="#pricing" class="hidden md:block px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full font-semibold shadow-md transition-all">Pre-Order $99/mo</a>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-700 hover:text-blue-600">
+                <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <nav class="px-6 py-4 flex flex-col gap-4">
+                <a href="#demo" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-blue-600 font-medium transition-colors py-2">Demo</a>
+                <a href="#features" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-blue-600 font-medium transition-colors py-2">Features</a>
+                <a href="#testimonials" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-blue-600 font-medium transition-colors py-2">Testimonials</a>
+                <a href="#faq" onclick="toggleMobileMenu()" class="text-slate-700 hover:text-blue-600 font-medium transition-colors py-2">FAQ</a>
+                <a href="#pricing" onclick="toggleMobileMenu()" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full font-semibold text-center shadow-md">Pre-Order $99/mo</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-3 px-4 py-2 bg-blue-50 rounded-full text-sm mb-8">
+                <div class="flex -space-x-2">
+                    <img src="https://i.pravatar.cc/150?img=33" class="w-8 h-8 rounded-full border-2 border-white">
+                    <img src="https://i.pravatar.cc/150?img=44" class="w-8 h-8 rounded-full border-2 border-white">
+                    <img src="https://i.pravatar.cc/150?img=27" class="w-8 h-8 rounded-full border-2 border-white">
+                    <img src="https://i.pravatar.cc/150?img=15" class="w-8 h-8 rounded-full border-2 border-white">
+                </div>
+                <span><strong>487</strong> pre-orders • <strong class="text-blue-600">$48,213</strong> in pre-sales</span>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Find LinkedIn leads<br>
+                <span class="text-blue-600">in seconds, not hours</span>
+            </h1>
+
+            <p class="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+                Stop wasting hours scrolling LinkedIn. AI finds qualified leads, extracts emails, and exports to CSV. 
+                <strong class="text-slate-900">Close more deals, not browser tabs.</strong>
+            </p>
+
+            <a href="#demo" class="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full font-bold text-lg shadow-lg mb-4">Try Interactive Demo 🎮</a>
+
+            <p class="text-sm text-slate-500">
+                <span class="text-blue-600 font-semibold">Try the demo below</span> • 20 searchable leads • Real CSV exports
+            </p>
+        </div>
+    </section>
+
+    <!-- Interactive Demo -->
+    <section id="demo" class="py-16 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">🎮 INTERACTIVE DEMO - TRY IT!</span>
+                <h2 class="text-4xl font-bold mb-4">See how <span class="text-blue-600">LeadFast works</span></h2>
+                <p class="text-xl text-slate-600">Search • Filter • Export real CSV files</p>
+            </div>
+
+            <!-- Export Notification -->
+            <div id="exportNotification" class="hidden fixed top-24 right-6 bg-emerald-500 text-white px-6 py-4 rounded-lg shadow-xl items-center gap-3 z-50">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="font-semibold">✅ <span id="exportCount">0</span> lead(s) exported!</span>
+            </div>
+
+            <!-- Demo Dashboard -->
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+                <div class="bg-slate-800 px-4 py-3 flex items-center gap-2">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                    </div>
+                    <div class="flex-1 text-center text-sm text-slate-400">app.leadfast.io/search</div>
+                </div>
+                
+                <div class="p-6">
+                    <!-- Search Bar -->
+                    <div class="mb-6 relative">
+                        <div class="flex gap-3">
+                            <div class="flex-1 relative">
+                                <input 
+                                    type="text" 
+                                    id="searchInput"
+                                    placeholder="Try: Find CTOs at SaaS companies in San Francisco" 
+                                    class="w-full px-4 py-3 border-2 border-slate-300 rounded-lg font-medium focus:outline-none focus:border-blue-500">
+                                <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-2 bg-white border-2 border-slate-200 rounded-lg shadow-xl z-10"></div>
+                            </div>
+                            <button id="searchBtn" onclick="performSearch()" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold flex items-center gap-2">
+                                <span id="loadingSpinner" class="hidden">
+                                    <svg class="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                </span>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="bg-slate-50 rounded-lg p-4 mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="font-semibold">🎯 Filters</div>
+                            <button onclick="clearFilters()" class="text-sm text-blue-600 font-semibold">Clear All</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                            <select id="filterLocation" class="px-3 py-2 border rounded-lg text-sm">
+                                <option value="">All Locations</option>
+                                <option value="San Francisco">San Francisco</option>
+                                <option value="New York">New York</option>
+                                <option value="Seattle">Seattle</option>
+                                <option value="Austin">Austin</option>
+                                <option value="Boston">Boston</option>
+                            </select>
+                            <select id="filterIndustry" class="px-3 py-2 border rounded-lg text-sm">
+                                <option value="">All Industries</option>
+                                <option value="SaaS">SaaS</option>
+                                <option value="FinTech">FinTech</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Cloud Computing">Cloud Computing</option>
+                            </select>
+                            <input type="text" id="filterTitle" placeholder="Job Title..." class="px-3 py-2 border rounded-lg text-sm">
+                            <select id="filterSize" class="px-3 py-2 border rounded-lg text-sm">
+                                <option value="">All Sizes</option>
+                                <option value="50-200">50-200</option>
+                                <option value="200-500">200-500</option>
+                                <option value="500-1000">500-1000</option>
+                            </select>
+                            <label class="flex items-center gap-2 px-3 py-2 border rounded-lg text-sm cursor-pointer hover:bg-slate-100">
+                                <input type="checkbox" id="filterVerified" class="w-4 h-4">
+                                <span>Verified Only</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Results Header -->
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="font-bold text-blue-600" id="resultCount">20</span>
+                            <span class="text-slate-600"> leads • </span>
+                            <span id="selectedCount">0</span>
+                            <span class="text-slate-600"> selected</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="selectAll()" class="px-3 py-2 text-sm border rounded-lg hover:bg-slate-50">Select All</button>
+                            <button onclick="exportSelectedLeads()" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold">Export Selected</button>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div id="resultsContainer" class="space-y-3 max-h-[500px] overflow-y-auto mb-6">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <!-- Export All -->
+                    <div class="text-center">
+                        <button onclick="exportAllLeads()" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold shadow-md">
+                            Export All Leads to CSV
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo Tips -->
+            <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div class="text-sm text-blue-900">
+                    <strong>💡 Try this:</strong> Click the search box to see suggestions • Search for "CTO" • Filter by "San Francisco" • Select leads and export!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Stop doing lead gen <span class="text-blue-600">the hard way</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-red-50 border-2 border-red-200 rounded-xl p-8">
+                    <div class="text-3xl mb-4">😫</div>
+                    <h3 class="text-2xl font-bold mb-4 text-red-900">The Old Way</h3>
+                    <ul class="space-y-3 text-slate-700">
+                        <li class="flex gap-3"><span class="text-red-500">❌</span> <span>Manually search LinkedIn for 3+ hours</span></li>
+                        <li class="flex gap-3"><span class="text-red-500">❌</span> <span>Copy-paste profiles one by one</span></li>
+                        <li class="flex gap-3"><span class="text-red-500">❌</span> <span>Use 5 different tools to find emails</span></li>
+                        <li class="flex gap-3"><span class="text-red-500">❌</span> <span>Get only 10-20 leads per day</span></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t-2 border-red-300">
+                        <div class="text-3xl font-bold text-red-900">$2,000+/month</div>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-8">
+                    <div class="text-3xl mb-4">⚡</div>
+                    <h3 class="text-2xl font-bold mb-4 text-emerald-900">The LeadFast Way</h3>
+                    <ul class="space-y-3 text-slate-700">
+                        <li class="flex gap-3"><span class="text-emerald-500">✅</span> <span>AI searches LinkedIn in 30 seconds</span></li>
+                        <li class="flex gap-3"><span class="text-emerald-500">✅</span> <span>Automatic profile extraction</span></li>
+                        <li class="flex gap-3"><span class="text-emerald-500">✅</span> <span>Built-in email finder</span></li>
+                        <li class="flex gap-3"><span class="text-emerald-500">✅</span> <span>Get 500+ leads per day</span></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t-2 border-emerald-300">
+                        <div class="text-3xl font-bold text-emerald-900">$99/month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 px-6 bg-slate-50 overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-semibold mb-4">💳 PAID PRE-ORDERS</span>
+                <h2 class="text-4xl font-bold mb-4">Salespeople who <span class="text-blue-600">put money down</span></h2>
+            </div>
+
+            <!-- Row 1 -->
+            <div class="testimonial-row mb-6 overflow-hidden">
+                <div class="flex gap-6 animate-scroll-right">
+                    <div class="flex gap-6 flex-shrink-0">
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=28" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">James Wilson</div>
+                                    <div class="text-sm text-slate-500">Sales Director</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">Pre-ordered instantly. I was paying $400/mo for Apollo + Hunter. If this delivers, it's worth 10x.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=47" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">Lisa Chen</div>
+                                    <div class="text-sm text-slate-500">Founder</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">I spend 2 hours daily on LinkedIn lead gen. $99 to get that time back? Easy decision.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=51" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">Marcus Johnson</div>
+                                    <div class="text-sm text-slate-500">BDR</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">Paid $99 without thinking. My quota is 50 leads/week. This will pay for itself day 1.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 flex-shrink-0">
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=28" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">James Wilson</div>
+                                    <div class="text-sm text-slate-500">Sales Director</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">Pre-ordered instantly. I was paying $400/mo for Apollo + Hunter. If this delivers, it's worth 10x.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=47" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">Lisa Chen</div>
+                                    <div class="text-sm text-slate-500">Founder</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">I spend 2 hours daily on LinkedIn lead gen. $99 to get that time back? Easy decision.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=51" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">Marcus Johnson</div>
+                                    <div class="text-sm text-slate-500">BDR</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">Paid $99 without thinking. My quota is 50 leads/week. This will pay for itself day 1.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="testimonial-row overflow-hidden">
+                <div class="flex gap-6 animate-scroll-left">
+                    <div class="flex gap-6 flex-shrink-0">
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=33" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">David Kim</div>
+                                    <div class="text-sm text-slate-500">Account Executive</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">$99/mo is nothing compared to one closed deal. This solves my biggest bottleneck.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=42" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">Rachel Foster</div>
+                                    <div class="text-sm text-slate-500">Growth Manager</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">Pre-ordered before reading the FAQ. That's how confident I am this will work.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=19" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">Sophie Martinez</div>
+                                    <div class="text-sm text-slate-500">Solo Consultant</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">As a solopreneur, I can't waste time prospecting. Paid $99 immediately.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 flex-shrink-0">
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=33" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">David Kim</div>
+                                    <div class="text-sm text-slate-500">Account Executive</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">$99/mo is nothing compared to one closed deal. This solves my biggest bottleneck.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=42" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">Rachel Foster</div>
+                                    <div class="text-sm text-slate-500">Growth Manager</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">Pre-ordered before reading the FAQ. That's how confident I am this will work.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 w-[400px] flex-shrink-0">
+                            <div class="flex gap-4 mb-4">
+                                <img src="https://i.pravatar.cc/150?img=19" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <div class="font-semibold">Sophie Martinez</div>
+                                    <div class="text-sm text-slate-500">Solo Consultant</div>
+                                </div>
+                            </div>
+                            <p class="text-slate-700">As a solopreneur, I can't waste time prospecting. Paid $99 immediately.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Everything you need to <span class="text-blue-600">close more deals</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white border border-slate-200 rounded-xl p-6">
+                    <div class="text-4xl mb-4">🔍</div>
+                    <h3 class="text-xl font-bold mb-2">AI-Powered Search</h3>
+                    <p class="text-slate-600">Natural language search. "Find CMOs at Series A fintech" and we do the rest.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-6">
+                    <div class="text-4xl mb-4">✉️</div>
+                    <h3 class="text-xl font-bold mb-2">Email Finder</h3>
+                    <p class="text-slate-600">Extract verified work emails. 95%+ accuracy rate.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-6">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold mb-2">CSV Export</h3>
+                    <p class="text-slate-600">One-click export. Import into any CRM.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-6">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold mb-2">Advanced Filters</h3>
+                    <p class="text-slate-600">Filter by title, company size, location, industry.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-6">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-2">Bulk Processing</h3>
+                    <p class="text-slate-600">Process 500+ leads at once.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-6">
+                    <div class="text-4xl mb-4">🔄</div>
+                    <h3 class="text-xl font-bold mb-2">Auto-Sync</h3>
+                    <p class="text-slate-600">Auto-update when people change jobs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Frequently Asked <span class="text-blue-600">Questions</span></h2>
+                <p class="text-xl text-slate-600">Everything you need to know about LeadFast</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleFAQ(1)" class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span class="font-semibold text-lg">How does LeadFast find emails?</span>
+                        <svg id="faq-icon-1" class="w-6 h-6 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="faq-content-1" class="hidden px-6 pb-5">
+                        <p class="text-slate-600">LeadFast uses AI-powered email pattern recognition combined with multiple verification databases to find and verify work emails. We achieve 95%+ accuracy by cross-referencing multiple data sources and validating emails in real-time before showing them to you.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleFAQ(2)" class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span class="font-semibold text-lg">Is this compliant with LinkedIn's terms of service?</span>
+                        <svg id="faq-icon-2" class="w-6 h-6 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="faq-content-2" class="hidden px-6 pb-5">
+                        <p class="text-slate-600">Yes. LeadFast uses publicly available LinkedIn data and complies with all data protection regulations including GDPR and CCPA. We don't use automated scraping bots. Our AI processes publicly visible professional information that users have chosen to make available on their profiles.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleFAQ(3)" class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span class="font-semibold text-lg">What's the difference between the $99 and $299 pricing?</span>
+                        <svg id="faq-icon-3" class="w-6 h-6 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="faq-content-3" class="hidden px-6 pb-5">
+                        <p class="text-slate-600">The $99/month pricing is our pre-order special for early supporters. After we launch in Q1 2025, the regular price will be $299/month. If you pre-order now, you lock in $99/month forever - even after we launch. That's a guaranteed $2,400/year savings for life.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleFAQ(4)" class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span class="font-semibold text-lg">How many leads can I export per month?</span>
+                        <svg id="faq-icon-4" class="w-6 h-6 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="faq-content-4" class="hidden px-6 pb-5">
+                        <p class="text-slate-600">You can find and export up to 500 verified leads per day (15,000/month). That's enough for most sales teams. If you need more, we offer enterprise plans with higher limits. All exports are unlimited CSV downloads to any CRM.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleFAQ(5)" class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span class="font-semibold text-lg">Can I cancel anytime?</span>
+                        <svg id="faq-icon-5" class="w-6 h-6 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="faq-content-5" class="hidden px-6 pb-5">
+                        <p class="text-slate-600">Absolutely. You can cancel your subscription at any time with one click. No long-term contracts, no cancellation fees. Plus, we offer a 60-day money-back guarantee after launch. If you're not satisfied within the first 60 days, we'll refund your entire payment - no questions asked.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleFAQ(6)" class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span class="font-semibold text-lg">What CRMs does LeadFast integrate with?</span>
+                        <svg id="faq-icon-6" class="w-6 h-6 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="faq-content-6" class="hidden px-6 pb-5">
+                        <p class="text-slate-600">LeadFast exports to standard CSV format, which works with all major CRMs including Salesforce, HubSpot, Pipedrive, Zoho, Microsoft Dynamics, and any other CRM that accepts CSV imports. We're also building native integrations with Salesforce and HubSpot for one-click sync (coming in Q2 2025).</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleFAQ(7)" class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span class="font-semibold text-lg">When will I get access?</span>
+                        <svg id="faq-icon-7" class="w-6 h-6 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="faq-content-7" class="hidden px-6 pb-5">
+                        <p class="text-slate-600">We're launching in Q1 2025 (January-March). All pre-order customers will get early access before the public launch, plus priority onboarding support. We'll send you email updates throughout the development process so you can see exactly what we're building.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 8 -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <button onclick="toggleFAQ(8)" class="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-slate-50 transition-colors">
+                        <span class="font-semibold text-lg">What if I need help or have questions?</span>
+                        <svg id="faq-icon-8" class="w-6 h-6 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="faq-content-8" class="hidden px-6 pb-5">
+                        <p class="text-slate-600">Pre-order customers get priority support via email and chat. We typically respond within 2 hours during business hours. We also provide comprehensive documentation, video tutorials, and a knowledge base. Plus, all pre-order customers get a free 1-on-1 onboarding call to ensure you're set up for success.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Still have questions -->
+            <div class="mt-12 text-center bg-blue-50 border border-blue-200 rounded-xl p-8">
+                <h3 class="text-xl font-bold mb-2">Still have questions?</h3>
+                <p class="text-slate-600 mb-4">We're here to help! Reach out and we'll get back to you within 24 hours.</p>
+                <a href="mailto:hello@leadfast.io" class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
+                    Contact Support
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 px-6 bg-slate-50">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Pre-order now, <span class="text-blue-600">lock in $99/mo forever</span></h2>
+            </div>
+
+            <div class="bg-white border-2 border-blue-200 rounded-2xl p-8 shadow-lg">
+                <div class="text-center mb-8">
+                    <span class="inline-block px-4 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">⚡ PRE-ORDER SPECIAL</span>
+                    <div class="text-4xl font-bold text-slate-400 line-through mb-4">$299/mo</div>
+                    <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 mb-4">
+                        <div class="text-6xl font-bold text-blue-600 mb-2">$99<span class="text-3xl">/mo</span></div>
+                        <div class="text-emerald-600 font-semibold text-lg">Save $2,400/year</div>
+                    </div>
+                </div>
+
+                <button onclick="window.location.href='https://buy.stripe.com/test_YOURLINK'" class="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full font-bold text-lg shadow-lg mb-4">
+                    Pre-Order Now for $99/mo 🚀
+                </button>
+
+                <div class="text-center text-sm text-slate-500">
+                    ✅ 60-day money-back • ✅ Cancel anytime
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creator -->
+    <section class="py-12 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white border border-slate-200 rounded-xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-6">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 p-0.5">
+                        <div class="w-full h-full rounded-full bg-white flex items-center justify-center text-3xl font-bold bg-gradient-to-br from-blue-600 to-indigo-600 bg-clip-text text-transparent">AS</div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold">Ayoub Samil</h3>
+                        <p class="text-slate-600">Senior Software Engineer</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-3">
+                    <a href="https://www.linkedin.com/in/ayoub-samil-5a86bb239/" class="p-3 bg-slate-100 hover:bg-slate-200 rounded-lg">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/yourusername" class="p-3 bg-slate-100 hover:bg-slate-200 rounded-lg">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+                    </a>
+                    <a href="https://github.com/yourusername" class="p-3 bg-slate-100 hover:bg-slate-200 rounded-lg">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white text-xl">🎯</div>
+                <span class="text-xl font-bold">LeadFast</span>
+            </div>
+            <div class="text-slate-500 text-sm">© 2025 LeadFast. All rights reserved.</div>
+        </div>
+    </footer>
+
+</body>
+</html>
