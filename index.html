@@ -281,7 +281,7 @@
         
         function exportSingleLead(leadId) {
             const lead = leadsDatabase.find(l => l.id === leadId);
-            const csv = 'Name,Title,Company,Industry,Location,Email,Phone,Verified\\n' + 
+            const csv = 'Name,Title,Company,Industry,Location,Email,Phone,Verified\n' + 
                        `"${lead.name}","${lead.title}","${lead.company}","${lead.industry}","${lead.location}","${lead.email}","${lead.phone}","${lead.verified}"`;
             downloadCSV(csv, `${lead.name.replace(/ /g, '_')}_lead.csv`);
             showNotification(1);
@@ -292,19 +292,19 @@
                 alert('Please select at least one lead to export');
                 return;
             }
-            let csv = 'Name,Title,Company,Industry,Location,Email,Phone,Verified\\n';
+            let csv = 'Name,Title,Company,Industry,Location,Email,Phone,Verified\n';
             selectedLeads.forEach(leadId => {
                 const lead = leadsDatabase.find(l => l.id === leadId);
-                csv += `"${lead.name}","${lead.title}","${lead.company}","${lead.industry}","${lead.location}","${lead.email}","${lead.phone}","${lead.verified}"\\n`;
+                csv += `"${lead.name}","${lead.title}","${lead.company}","${lead.industry}","${lead.location}","${lead.email}","${lead.phone}","${lead.verified}"\n`;
             });
             downloadCSV(csv, `leadfast_selected_${selectedLeads.size}_leads.csv`);
             showNotification(selectedLeads.size);
         }
         
         function exportAllLeads() {
-            let csv = 'Name,Title,Company,Industry,Location,Email,Phone,Verified\\n';
+            let csv = 'Name,Title,Company,Industry,Location,Email,Phone,Verified\n';
             currentLeads.forEach(lead => {
-                csv += `"${lead.name}","${lead.title}","${lead.company}","${lead.industry}","${lead.location}","${lead.email}","${lead.phone}","${lead.verified}"\\n`;
+                csv += `"${lead.name}","${lead.title}","${lead.company}","${lead.industry}","${lead.location}","${lead.email}","${lead.phone}","${lead.verified}"\n`;
             });
             downloadCSV(csv, `leadfast_export_${currentLeads.length}_leads.csv`);
             showNotification(currentLeads.length);
@@ -924,7 +924,7 @@
             <div class="mt-12 text-center bg-blue-50 border border-blue-200 rounded-xl p-8">
                 <h3 class="text-xl font-bold mb-2">Still have questions?</h3>
                 <p class="text-slate-600 mb-4">We're here to help! Reach out and we'll get back to you within 24 hours.</p>
-                <a href="mailto:hello@leadfast.io" class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
+                <a href="/cdn-cgi/l/email-protection#92faf7fefefdd2fef7f3f6f4f3e1e6bcfbfd" class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
                     Contact Support
                 </a>
             </div>
