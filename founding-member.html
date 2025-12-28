@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadFast - Founding Member Offer</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        // Track when user lands on this page
+        window.addEventListener('load', function() {
+            // Get the plan from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan') || 'pro';
+            
+            console.log('Founding member page viewed - Plan:', plan);
+            
+            // Track page view with plan info
+            const views = JSON.parse(localStorage.getItem('founding_page_views') || '[]');
+            views.push({
+                timestamp: new Date().toISOString(),
+                referrer: document.referrer,
+                plan: plan
+            });
+            localStorage.setItem('founding_page_views', JSON.stringify(views));
+
+            // Update page content based on plan
+            updatePlanDisplay(plan);
+        });
+
+        function updatePlanDisplay(plan) {
+            const planData = {
+                'basic': {
+                    name: 'Basic',
+                    monthlyPrice: 49,
+                    yearlyTotal: 588,
+                    leads: '2,500',
+                    emailAccuracy: '90%'
+                },
+                'growth': {
+                    name: 'Growth',
+                    monthlyPrice: 99,
+                    yearlyTotal: 1188,
+                    leads: '7,500',
+                    emailAccuracy: '93%'
+                },
+                'pro': {
+                    name: 'Pro',
+                    monthlyPrice: 149,
+                    yearlyTotal: 1788,
+                    leads: '15,000',
+                    emailAccuracy: '95%+'
+                }
+            };
+
+            const data = planData[plan] || planData['pro'];
+
+            // Update plan name
+            document.getElementById('clickedPlanName').textContent = `${data.name} Plan`;
+            
+            // Update prices
+            document.getElementById('monthlyPrice').textContent = `$${data.monthlyPrice}`;
+            document.getElementById('yearlyTotal').textContent = `$${data.yearlyTotal.toLocaleString()}`;
+            
+            // Update features
+            document.getElementById('planLeads').textContent = `${data.leads} leads/month`;
+            document.getElementById('planEmailAccuracy').textContent = `${data.emailAccuracy} email accuracy`;
+
+            // Calculate savings
+            const savings = data.yearlyTotal - 99;
+            document.getElementById('savings').textContent = `Save $${savings.toLocaleString()} in Year 1 alone`;
+        }
+
+        function trackStripeClick() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan') || 'pro';
+            
+            console.log('Stripe payment button clicked - Plan:', plan);
+            
+            // Track payment intent with plan info
+            const clicks = JSON.parse(localStorage.getItem('stripe_clicks') || '[]');
+            clicks.push({
+                timestamp: new Date().toISOString(),
+                plan: plan
+            });
+            localStorage.setItem('stripe_clicks', JSON.stringify(clicks));
+        }
+    </script>
+</head>
+<body class="font-sans bg-gradient-to-br from-slate-50 to-blue-50">
+    
+    <!-- TRANSPARENCY BANNER -->
+    <div class="bg-gradient-to-r from-yellow-400 to-amber-400 border-b-4 border-yellow-600 py-4 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-3 mb-2">
+                <svg class="w-6 h-6 text-yellow-900" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-lg font-black text-yellow-900 uppercase tracking-wide">Private Beta Offer</span>
+            </div>
+            <p class="text-yellow-900 font-semibold text-base">
+                <strong>LeadFast is in development.</strong> Pre-order now, get lifetime access at 67% off. Expected launch: <strong>March 31, 2025</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="min-h-screen flex items-center justify-center px-6 py-16">
+        <div class="max-w-5xl w-full">
+            
+            <!-- Hero Section -->
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 border-2 border-blue-300 rounded-full text-sm font-bold text-blue-900 mb-6">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-600"></span>
+                    </span>
+                    You're interested in the Pro Plan
+                </div>
+
+                <h1 class="text-5xl md:text-6xl font-black mb-6 leading-tight">
+                    We're currently in <span class="text-blue-600">Private Beta</span>
+                </h1>
+                <p class="text-2xl text-slate-600 mb-4 max-w-3xl mx-auto">
+                    But you can become a <strong>Founding Member</strong> and get the Pro plan for life at a massive discount.
+                </p>
+            </div>
+
+            <!-- The Deal -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                
+                <!-- What You Wanted -->
+                <div class="bg-white rounded-2xl shadow-lg border-2 border-slate-200 p-8">
+                    <div class="text-center mb-6">
+                        <div class="text-slate-500 font-bold text-sm uppercase mb-2">What You Clicked</div>
+                        <h3 id="clickedPlanName" class="text-3xl font-black text-slate-400 line-through mb-2">Pro Plan</h3>
+                        <div class="text-5xl font-black text-slate-400 line-through"><span id="monthlyPrice">$149</span><span class="text-2xl">/mo</span></div>
+                        <div class="text-red-600 font-bold mt-2">= <span id="yearlyTotal">$1,788</span>/year</div>
+                    </div>
+
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-slate-500">
+                            <svg class="w-6 h-6 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span id="planLeads">15,000 leads/month</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-500">
+                            <svg class="w-6 h-6 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span id="planEmailAccuracy">95%+ email accuracy</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-500">
+                            <svg class="w-6 h-6 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>AI-powered search</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-500">
+                            <svg class="w-6 h-6 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Priority support</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- What You Get -->
+                <div class="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl shadow-2xl border-2 border-blue-400 p-8 relative transform hover:scale-105 transition-all">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-sm font-black uppercase">
+                            🎉 Founding Member Deal
+                        </span>
+                    </div>
+
+                    <div class="text-center mb-6">
+                        <div class="text-blue-100 font-bold text-sm uppercase mb-2">What You Get Instead</div>
+                        <h3 class="text-3xl font-black text-white mb-2">Lifetime Access</h3>
+                        <div class="text-6xl font-black text-white mb-1">$99</div>
+                        <div class="text-xl text-yellow-300 font-black">One-time payment</div>
+                        <div class="mt-3 inline-block bg-emerald-400 text-emerald-900 px-4 py-2 rounded-full font-black text-sm" id="savings">
+                            Save $1,689 in Year 1 alone
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-white">
+                            <svg class="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span><strong>Everything in Pro</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white">
+                            <svg class="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span><strong>Lifetime access</strong> (no recurring fees)</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white">
+                            <svg class="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Early access before public launch</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white">
+                            <svg class="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Direct line to founder (me)</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-white">
+                            <svg class="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Private founder Discord</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="bg-white rounded-2xl shadow-xl border-2 border-slate-200 p-10">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-black mb-4">Here's the deal:</h2>
+                    <p class="text-xl text-slate-700 leading-relaxed max-w-2xl mx-auto">
+                        I'm building LeadFast and need <strong>50 founding members</strong> to fund development and validate the market. In exchange, you get <strong>lifetime Pro access</strong> for a one-time payment of $99.
+                    </p>
+                </div>
+
+                <!-- THE STRIPE BUTTON -->
+                <a href="https://buy.stripe.com/test_YOURLINK" 
+                   onclick="trackStripeClick()"
+                   class="block w-full max-w-xl mx-auto py-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-2xl font-black text-2xl shadow-2xl transition-all transform hover:scale-105 text-center mb-6">
+                    Become a Founding Member - $99 →
+                </a>
+
+                <!-- Guarantees -->
+                <div class="space-y-2 text-center text-sm text-slate-600 max-w-xl mx-auto">
+                    <div class="flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="font-semibold">Full refund until launch (March 31, 2025)</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="font-semibold">30-day money-back after launch</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="font-semibold">Secure payment via Stripe</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Promise -->
+            <div class="mt-12 bg-white/80 backdrop-blur-sm border-2 border-slate-200 rounded-2xl p-8">
+                <h3 class="text-2xl font-black mb-6 text-center">My Personal Commitment to You:</h3>
+                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">📅</div>
+                        <h4 class="font-bold text-lg mb-2">Expected Launch</h4>
+                        <p class="text-slate-600">March 31, 2025. If delayed, I'll update you immediately and offer refunds.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🔓</div>
+                        <h4 class="font-bold text-lg mb-2">Radical Transparency</h4>
+                        <p class="text-slate-600">Join founder Discord. Watch me build in public. Ask questions anytime.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">💯</div>
+                        <h4 class="font-bold text-lg mb-2">Risk-Free</h4>
+                        <p class="text-slate-600">Full refund before launch. 30-day guarantee after. No questions asked.</p>
+                    </div>
+                </div>
+                
+                <!-- Personal Note -->
+                <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                            AS
+                        </div>
+                        <div>
+                            <p class="text-slate-700 leading-relaxed mb-2">
+                                <strong>Why I'm building this:</strong> I've spent 3+ years as a Senior Software Engineer building distributed systems and SaaS products at Additess. I've watched sales teams waste countless hours on manual prospecting. This problem is personal to me—I know the pain, and I know the solution.
+                            </p>
+                            <p class="text-slate-700 leading-relaxed">
+                                I'm not backed by VC. I'm not racing to IPO. I'm an indie maker building a tool I wish existed. Your pre-order funds the development, and you get lifetime access at founder pricing. Simple as that.
+                            </p>
+                            <p class="text-sm text-blue-700 font-bold mt-3">
+                                — Ayoub Samil • Senior Software Engineer • Based in Agadir, Morocco
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Quick -->
+            <div class="mt-12 space-y-4">
+                <details class="bg-white rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                        <span>Why should I pay now instead of waiting for launch?</span>
+                        <svg class="w-6 h-6 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-slate-700 leading-relaxed">
+                        Two reasons: (1) <strong>You save 67-94%</strong> - Lock in lifetime Pro access for $99 one-time instead of paying $149/month forever. That's $1,689+ saved in just the first year. (2) <strong>You help shape the product</strong> - As a founding member, you get early access and direct input on features before public launch.
+                    </p>
+                </details>
+
+                <details class="bg-white rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                        <span>What if you don't deliver by March 2025?</span>
+                        <svg class="w-6 h-6 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-slate-700 leading-relaxed">
+                        I'll email you <strong>before the deadline</strong> with an honest update. You can either: (a) wait and keep your founding member pricing, or (b) get an immediate full refund. No excuses, no runaround. I'm building in public, so you'll see the progress every step of the way in the founder Discord.
+                    </p>
+                </details>
+
+                <details class="bg-white rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                        <span>Is this really "lifetime" access?</span>
+                        <svg class="w-6 h-6 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-slate-700 leading-relaxed">
+                        Yes. <strong>One payment, access forever.</strong> No monthly fees, no surprise charges. As long as LeadFast exists, your account stays active with full Pro features. If I ever have to shut down (worst case scenario), you'll get at least 60 days notice and a full refund.
+                    </p>
+                </details>
+
+                <details class="bg-white rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                        <span>How do refunds work?</span>
+                        <svg class="w-6 h-6 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-slate-700 leading-relaxed">
+                        <strong>Before launch (until March 31, 2025):</strong> Full refund, no questions asked. Just email me.<br><br>
+                        <strong>After launch:</strong> 30-day money-back guarantee. If you're not satisfied after trying LeadFast, you get your $99 back.<br><br>
+                        All refunds are processed within 3 business days via Stripe. Simple as that.
+                    </p>
+                </details>
+
+                <details class="bg-white rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                        <span>What if I need more/fewer leads than my plan allows?</span>
+                        <svg class="w-6 h-6 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-slate-700 leading-relaxed">
+                        As a founding member, you're getting <strong>lifetime Pro access</strong> regardless of which plan you clicked. That means <strong>15,000 leads/month forever</strong>. If you need more than that, we can discuss custom enterprise pricing after launch, but you'll never lose your founding member status.
+                    </p>
+                </details>
+
+                <details class="bg-white rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                        <span>How do I know this is legit and not a scam?</span>
+                        <svg class="w-6 h-6 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-slate-700 leading-relaxed">
+                        Fair question. Here's why you can trust this: (1) I'm Ayoub Samil, verifiable on <a href="https://www.linkedin.com/in/ayoub-samil-5a86bb239/" target="_blank" class="text-blue-600 hover:underline font-bold">LinkedIn</a> with 3+ years as a software engineer. (2) Payment goes through <strong>Stripe</strong> (not some sketchy processor) with full buyer protection. (3) <strong>Full refund guarantee</strong> until launch. (4) I'm building in public - you can watch the progress. This is a bet on an indie maker. If that doesn't feel right, don't do it.
+                    </p>
+                </details>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-12 text-center">
+                <p class="text-slate-500 text-sm mb-3">
+                    Questions? Email me: <a href="mailto:ayoub@leadfast.io" class="text-blue-600 hover:underline font-bold">ayoub@leadfast.io</a>
+                </p>
+                <p class="text-slate-400 text-xs">
+                    <a href="leadfast_main.html#pricing" class="hover:text-slate-600">← Back to pricing</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
