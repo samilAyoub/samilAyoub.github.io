@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeadFast - Find 500 LinkedIn Leads Daily in 30 Seconds</title>
+    <title>LeadFast - LinkedIn Lead Generation Made Simple</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-    
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
@@ -22,28 +19,264 @@
     </script>
     
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        .animate-scroll-left {
-            animation: scroll-left 30s linear infinite;
-        }
-        
-        .testimonial-row:hover .animate-scroll-left {
-            animation-play-state: paused;
-        }
+        html { scroll-behavior: smooth; }
     </style>
+
+    <!-- Simple Analytics Tracking (Optional - use your preferred tool) -->
+    <script>
+        // Track plan clicks
+        function trackPlanClick(planName, planPrice) {
+            console.log(`Plan clicked: ${planName} - ${planPrice}`);
+            
+            // If you use Google Analytics:
+            // gtag('event', 'plan_click', { plan_name: planName, plan_price: planPrice });
+            
+            // If you use Plausible:
+            // plausible('PlanClick', { props: { plan: planName, price: planPrice } });
+            
+            // Store in localStorage for your own tracking
+            const clicks = JSON.parse(localStorage.getItem('plan_clicks') || '[]');
+            clicks.push({
+                plan: planName,
+                price: planPrice,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('plan_clicks', JSON.stringify(clicks));
+        }
+    </script>
 </head>
 <body class="font-sans bg-white">
     
+    <!-- HEADER -->
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-slate-200 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white text-xl font-bold">🎯</div>
+                <span class="text-2xl font-bold">LeadFast</span>
+            </div>
+            <a href="#pricing" class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full font-bold shadow-lg transition-all">
+                See Pricing →
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-white to-slate-50">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-6xl md:text-7xl font-black mb-6 leading-tight">
+                Stop wasting 15 hours/week<br>
+                <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">on LinkedIn prospecting</span>
+            </h1>
+
+            <p class="text-2xl text-slate-600 mb-4 max-w-3xl mx-auto font-medium">
+                LeadFast finds 500 qualified leads daily, verifies their emails, and exports directly to your CRM.
+            </p>
+            <p class="text-xl text-slate-500 mb-8 max-w-3xl mx-auto">
+                No more manual copying. No more bounced emails. Just results.
+            </p>
+
+            <a href="#pricing" class="inline-block px-12 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full font-bold text-xl shadow-2xl transition-all transform hover:scale-105">
+                Choose Your Plan →
+            </a>
+        </div>
+    </section>
+
+    <!-- THE PROBLEM -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black mb-4">Your current process is <span class="text-red-600">broken</span></h2>
+                <p class="text-xl text-slate-600">Here's what you're paying for lead generation right now</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl border-2 border-slate-200 overflow-hidden mb-12">
+                <table class="w-full">
+                    <thead class="bg-slate-100 border-b-2 border-slate-300">
+                        <tr>
+                            <th class="px-6 py-4 text-left font-bold text-lg">Tool</th>
+                            <th class="px-6 py-4 text-center font-bold text-lg">Monthly Cost</th>
+                            <th class="px-6 py-4 text-center font-bold text-lg">Email Finder</th>
+                            <th class="px-6 py-4 text-center font-bold text-lg">Manual Work</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-4 font-semibold">LinkedIn Sales Nav</td>
+                            <td class="px-6 py-4 text-center font-bold text-red-600">$99</td>
+                            <td class="px-6 py-4 text-center">❌</td>
+                            <td class="px-6 py-4 text-center">10+ hrs/week</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-4 font-semibold">Apollo.io</td>
+                            <td class="px-6 py-4 text-center font-bold text-red-600">$149</td>
+                            <td class="px-6 py-4 text-center">❌ Extra $49</td>
+                            <td class="px-6 py-4 text-center">5+ hrs/week</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-4 font-semibold">Hunter.io</td>
+                            <td class="px-6 py-4 text-center font-bold text-red-600">$49</td>
+                            <td class="px-6 py-4 text-center">✅ 5,000 emails</td>
+                            <td class="px-6 py-4 text-center">8+ hrs/week</td>
+                        </tr>
+                        <tr class="bg-red-50 border-2 border-red-200 font-bold">
+                            <td class="px-6 py-4 text-lg">TOTAL</td>
+                            <td class="px-6 py-4 text-center text-2xl text-red-600">$297/mo</td>
+                            <td class="px-6 py-4 text-center text-red-600">Multiple tools</td>
+                            <td class="px-6 py-4 text-center text-red-600">23+ hrs/week</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
+                <h3 class="text-3xl font-black mb-4">LeadFast replaces all of this</h3>
+                <p class="text-xl">One tool. One price. Zero manual work.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMO SECTION -->
+    <section id="demo" class="py-20 px-6 bg-slate-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-bold mb-4">👀 WORKING DEMO</span>
+                <h2 class="text-5xl font-black text-white mb-4">Try it yourself <span class="text-blue-400">right now</span></h2>
+                <p class="text-xl text-slate-300">This is a fully functional demo. Search, filter, and export leads!</p>
+            </div>
+
+            <!-- Export Notification -->
+            <div id="exportNotification" class="hidden fixed top-24 right-6 bg-emerald-500 text-white px-6 py-4 rounded-lg shadow-2xl items-center gap-3 z-50">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="font-bold">✅ <span id="exportCount">0</span> lead(s) exported to CSV!</span>
+            </div>
+
+            <!-- Demo Interface -->
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div class="bg-slate-800 px-4 py-3 flex items-center gap-2">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                    </div>
+                    <div class="flex-1 text-center text-sm text-slate-400 font-mono">app.leadfast.io/search</div>
+                </div>
+                
+                <div class="p-8">
+                    <!-- Search -->
+                    <div class="mb-6 relative">
+                        <div class="flex gap-3">
+                            <div class="flex-1 relative">
+                                <input 
+                                    type="text" 
+                                    id="searchInput"
+                                    placeholder="Try: CTO, VP Engineering, San Francisco, SaaS..." 
+                                    class="w-full px-5 py-4 border-2 border-slate-300 rounded-xl text-lg font-medium focus:outline-none focus:border-blue-500 transition-colors">
+                                <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-2 bg-white border-2 border-slate-200 rounded-xl shadow-2xl z-10"></div>
+                            </div>
+                            <button id="searchBtn" onclick="performSearch()" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg flex items-center gap-2 transition-colors">
+                                <span id="loadingSpinner" class="hidden">
+                                    <svg class="animate-spin h-6 w-6" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                </span>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="bg-slate-50 rounded-xl p-4 mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="font-bold text-slate-700">🎯 Filters</div>
+                            <button onclick="clearFilters()" class="text-sm text-blue-600 font-bold hover:text-blue-700">Clear All</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                            <select id="filterLocation" class="px-4 py-3 border-2 border-slate-300 rounded-lg font-medium focus:outline-none focus:border-blue-500">
+                                <option value="">All Locations</option>
+                                <option value="San Francisco">San Francisco</option>
+                                <option value="New York">New York</option>
+                            </select>
+                            <select id="filterIndustry" class="px-4 py-3 border-2 border-slate-300 rounded-lg font-medium focus:outline-none focus:border-blue-500">
+                                <option value="">All Industries</option>
+                                <option value="SaaS">SaaS</option>
+                                <option value="FinTech">FinTech</option>
+                                <option value="Marketing">Marketing</option>
+                            </select>
+                            <input type="text" id="filterTitle" placeholder="Job Title..." class="px-4 py-3 border-2 border-slate-300 rounded-lg font-medium focus:outline-none focus:border-blue-500">
+                            <label class="flex items-center gap-2 px-4 py-3 border-2 border-slate-300 rounded-lg cursor-pointer hover:bg-slate-100">
+                                <input type="checkbox" id="filterVerified" class="w-5 h-5 text-blue-600 rounded">
+                                <span class="font-medium">Verified Only</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Results Header -->
+                    <div class="flex items-center justify-between mb-4 pb-4 border-b-2 border-slate-200">
+                        <div class="text-lg">
+                            <span class="font-black text-blue-600 text-2xl" id="resultCount">8</span>
+                            <span class="text-slate-600 font-medium"> leads found</span>
+                            <span class="text-slate-400 text-sm ml-3">•</span>
+                            <span class="text-sm text-slate-500 ml-3"><span id="selectedCount">0</span> selected</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="selectAll()" class="px-4 py-2 text-sm border-2 border-slate-300 rounded-lg font-bold hover:bg-slate-50">Select All</button>
+                            <button onclick="exportSelectedLeads()" class="px-5 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700">Export Selected</button>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div id="resultsContainer" class="space-y-3 max-h-[500px] overflow-y-auto mb-6">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <!-- Export All -->
+                    <div class="text-center pt-6 border-t-2 border-slate-200">
+                        <button onclick="exportAllLeads()" class="px-12 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-black text-xl transition-all shadow-xl inline-flex items-center gap-3">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                            </svg>
+                            Download All Leads (CSV)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo Info -->
+            <div class="mt-8 bg-blue-900 border-2 border-blue-700 rounded-xl p-6 text-center">
+                <p class="text-blue-100 text-lg font-semibold mb-4">
+                    ✨ This is a <span class="text-white font-black">FULLY WORKING DEMO</span>. All searches, filters, and exports work!
+                </p>
+                <div class="grid md:grid-cols-3 gap-4 text-sm text-blue-100">
+                    <div class="bg-blue-800/50 rounded-lg p-3">
+                        <div class="font-bold text-white mb-1">Try searching:</div>
+                        <div>"CTO" • "VP Engineering" • "CMO"</div>
+                    </div>
+                    <div class="bg-blue-800/50 rounded-lg p-3">
+                        <div class="font-bold text-white mb-1">Try locations:</div>
+                        <div>"San Francisco" • "New York"</div>
+                    </div>
+                    <div class="bg-blue-800/50 rounded-lg p-3">
+                        <div class="font-bold text-white mb-1">Try exporting:</div>
+                        <div>Select leads → Export as CSV</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA after demo -->
+            <div class="mt-12 text-center">
+                <p class="text-white text-xl mb-6 font-semibold">Ready to get full access?</p>
+                <a href="#pricing" class="inline-block px-10 py-5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white rounded-xl font-black text-xl shadow-2xl transition-all transform hover:scale-105">
+                    See Founding Member Pricing →
+                </a>
+            </div>
+        </div>
+    </section>
+
     <script>
-        // Embedded leads database
+        // Embedded leads database for demo
         const leadsDatabase = [
             { id: 1, name: "Michael Chen", title: "CTO", company: "TechFlow", industry: "SaaS", location: "San Francisco, CA", employees: "50-200", email: "m.chen@techflow.io", phone: "+1 415-555-0123", verified: true, lastActive: "2 days ago", img: 60 },
             { id: 2, name: "Sarah Martinez", title: "VP Engineering", company: "DataSync", industry: "Data Analytics", location: "San Francisco, CA", employees: "200-500", email: "sarah.m@datasync.com", phone: "+1 415-555-0234", verified: true, lastActive: "1 week ago", img: 32 },
@@ -55,14 +288,7 @@
             { id: 8, name: "Rachel Foster", title: "VP Marketing", company: "GrowthEngine", industry: "Marketing", location: "New York, NY", employees: "50-200", email: "r.foster@growthengine.io", phone: "+1 212-555-0345", verified: true, lastActive: "1 week ago", img: 41 }
         ];
         
-        const searchSuggestions = [
-            "CTO",
-            "VP Engineering",
-            "CMO",
-            "San Francisco",
-            "New York",
-            "SaaS"
-        ];
+        const searchSuggestions = ["CTO", "VP Engineering", "CMO", "San Francisco", "New York", "SaaS"];
         
         let currentLeads = [];
         let allLeads = [];
@@ -84,7 +310,8 @@
                 searchInput.addEventListener('focus', showSearchSuggestions);
                 document.addEventListener('click', function(e) {
                     if (!searchInput.contains(e.target)) {
-                        document.getElementById('searchSuggestions').classList.add('hidden');
+                        const suggestions = document.getElementById('searchSuggestions');
+                        if (suggestions) suggestions.classList.add('hidden');
                     }
                 });
             }
@@ -99,6 +326,7 @@
         function showSearchSuggestions(e) {
             e.stopPropagation();
             const container = document.getElementById('searchSuggestions');
+            if (!container) return;
             container.innerHTML = searchSuggestions.map(suggestion => `
                 <div class="search-suggestion px-4 py-2 text-sm hover:bg-slate-50 cursor-pointer" onclick="useSuggestion('${suggestion}')">
                     🔍 ${suggestion}
@@ -115,7 +343,8 @@
         
         function performSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            document.getElementById('searchSuggestions').classList.add('hidden');
+            const suggestions = document.getElementById('searchSuggestions');
+            if (suggestions) suggestions.classList.add('hidden');
             showLoading();
             
             setTimeout(() => {
@@ -285,13 +514,16 @@
         
         function showNotification(count) {
             const notification = document.getElementById('exportNotification');
-            document.getElementById('exportCount').textContent = count;
-            notification.classList.remove('hidden');
-            notification.classList.add('flex');
-            setTimeout(() => {
-                notification.classList.add('hidden');
-                notification.classList.remove('flex');
-            }, 3000);
+            const exportCount = document.getElementById('exportCount');
+            if (notification && exportCount) {
+                exportCount.textContent = count;
+                notification.classList.remove('hidden');
+                notification.classList.add('flex');
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                    notification.classList.remove('flex');
+                }, 3000);
+            }
         }
         
         function showLoading() {
@@ -307,842 +539,234 @@
             if (spinner) spinner.classList.add('hidden');
             if (btn) btn.disabled = false;
         }
-        
-        function toggleFAQ(num) {
-            const content = document.getElementById(`faq-content-${num}`);
-            const icon = document.getElementById(`faq-icon-${num}`);
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                content.classList.add('hidden');
-                icon.style.transform = 'rotate(0deg)';
-            }
-        }
-    </script>
-    
-    <!-- HEADER: Clean, No Distractions -->
-    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-slate-200 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white text-xl font-bold">🎯</div>
-                <span class="text-2xl font-bold">LeadFast</span>
-            </div>
-            <!-- LIVE REVENUE COUNTER - MASSIVE TRUST BUILDER -->
-            <div class="hidden md:flex items-center gap-4 text-sm">
-                <div class="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-full">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <span class="font-semibold text-emerald-900">$<span id="liveRevenue">48,213</span> in pre-sales</span>
-                </div>
-            </div>
-            <a href="#pricing" class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full font-bold shadow-lg transition-all">Get LeadFast →</a>
-        </div>
-    </header>
-
-    <script>
-        // Live revenue ticker - adds $99 every 2-8 minutes (realistic pre-order rate)
-        let currentRevenue = 48213;
-        setInterval(() => {
-            currentRevenue += 99;
-            document.getElementById('liveRevenue').textContent = currentRevenue.toLocaleString();
-        }, Math.random() * 360000 + 120000); // Random between 2-8 minutes
     </script>
 
-    <!-- HERO: The 3-Second Rule -->
-    <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-white to-slate-50">
-        <div class="max-w-5xl mx-auto text-center">
-            <!-- Transformation Headline -->
-            <h1 class="text-6xl md:text-7xl font-black mb-6 leading-tight">
-                Find 500 LinkedIn leads<br>
-                <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">in 30 seconds</span>
-            </h1>
-
-            <!-- SPECIFIC PAIN - This is what converts -->
-            <p class="text-2xl text-slate-600 mb-4 max-w-3xl mx-auto font-medium">
-                Your team wastes <strong class="text-red-600">15 hours/week</strong> copying LinkedIn profiles into spreadsheets.
-            </p>
-            <p class="text-xl text-slate-500 mb-8 max-w-3xl mx-auto">
-                LeadFast finds the leads. Finds the emails. Exports to your CRM. You close the deals.
-            </p>
-
-            <!-- Social Proof Halo + URGENCY -->
-            <div class="flex flex-col items-center gap-3 mb-8">
-                <div class="inline-flex items-center gap-3 px-5 py-2 bg-emerald-50 border border-emerald-200 rounded-full text-sm">
-                    <div class="flex -space-x-2">
-                        <img src="https://i.pravatar.cc/150?img=33" class="w-8 h-8 rounded-full border-2 border-white">
-                        <img src="https://i.pravatar.cc/150?img=44" class="w-8 h-8 rounded-full border-2 border-white">
-                        <img src="https://i.pravatar.cc/150?img=27" class="w-8 h-8 rounded-full border-2 border-white">
-                        <img src="https://i.pravatar.cc/150?img=15" class="w-8 h-8 rounded-full border-2 border-white">
-                    </div>
-                    <span class="font-semibold text-emerald-900"><strong>487</strong> sales teams paid upfront</span>
-                </div>
-                <!-- URGENCY TICKER -->
-                <div class="text-sm text-red-600 font-bold animate-pulse">
-                    ⚡ Only <span class="text-xl">13</span> lifetime spots left at $99/mo
-                </div>
-            </div>
-
-            <!-- Primary CTA -->
-            <div class="flex flex-col items-center gap-4">
-                <a href="#pricing" class="group px-12 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full font-bold text-xl shadow-2xl transition-all transform hover:scale-105 inline-flex items-center gap-3">
-                    Lock in $99/mo Forever
-                    <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
-                </a>
-                <p class="text-sm text-slate-500">
-                    <span class="text-red-600 font-semibold line-through">$299/mo</span> 
-                    <span class="mx-2">→</span>
-                    <span class="text-blue-600 font-bold">$99/mo</span> 
-                    (saves you $2,400/year)
-                </p>
-                <!-- RISK REVERSAL -->
-                <p class="text-xs text-slate-400">
-                    60-day money back • Cancel anytime • No questions asked
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- DEMO: Show, Don't Tell -->
-    <section id="demo" class="py-20 px-6 bg-slate-900">
+    <!-- PRICING - THE VALIDATION FUNNEL -->
+    <section id="pricing" class="py-20 px-6 bg-gradient-to-b from-slate-50 to-white">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="inline-block px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-bold mb-4">👀 SEE IT IN ACTION</span>
-                <h2 class="text-5xl font-black text-white mb-4">Watch it find leads <span class="text-blue-400">in real-time</span></h2>
-                <p class="text-xl text-slate-300">This is the actual interface you'll use. Try it yourself below.</p>
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black mb-4">Choose your plan</h2>
+                <p class="text-xl text-slate-600">Start free. Upgrade when ready.</p>
             </div>
 
-            <!-- Export Notification -->
-            <div id="exportNotification" class="hidden fixed top-24 right-6 bg-emerald-500 text-white px-6 py-4 rounded-lg shadow-2xl items-center gap-3 z-50">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="font-bold">✅ <span id="exportCount">0</span> lead(s) exported to CSV!</span>
-            </div>
-
-            <!-- Demo Interface -->
-            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
-                <div class="bg-slate-800 px-4 py-3 flex items-center gap-2">
-                    <div class="flex gap-2">
-                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
-                    </div>
-                    <div class="flex-1 text-center text-sm text-slate-400 font-mono">app.leadfast.io/search</div>
-                </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 
-                <div class="p-8">
-                    <!-- Search -->
-                    <div class="mb-6 relative">
-                        <div class="flex gap-3">
-                            <div class="flex-1 relative">
-                                <input 
-                                    type="text" 
-                                    id="searchInput"
-                                    placeholder="Try: CTO, VP Engineering, San Francisco, SaaS..." 
-                                    class="w-full px-5 py-4 border-2 border-slate-300 rounded-xl text-lg font-medium focus:outline-none focus:border-blue-500 transition-colors">
-                                <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-2 bg-white border-2 border-slate-200 rounded-xl shadow-2xl z-10"></div>
-                            </div>
-                            <button id="searchBtn" onclick="performSearch()" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg flex items-center gap-2 transition-colors">
-                                <span id="loadingSpinner" class="hidden">
-                                    <svg class="animate-spin h-6 w-6" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                </span>
-                                Search AI
-                            </button>
+                <!-- BASIC TIER -->
+                <div class="bg-white rounded-2xl shadow-lg border-2 border-slate-200 p-8 hover:shadow-xl transition-all">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold mb-2">Basic</h3>
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span class="text-5xl font-black">$49</span>
+                            <span class="text-slate-500">/month</span>
                         </div>
+                        <p class="text-slate-600">For solopreneurs & freelancers</p>
                     </div>
 
-                    <!-- Filters -->
-                    <div class="bg-slate-50 rounded-xl p-4 mb-6">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="font-bold text-slate-700">🎯 Advanced Filters</div>
-                            <button onclick="clearFilters()" class="text-sm text-blue-600 font-bold hover:text-blue-700">Clear All</button>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
-                            <select id="filterLocation" class="px-4 py-3 border-2 border-slate-300 rounded-lg font-medium focus:outline-none focus:border-blue-500">
-                                <option value="">All Locations</option>
-                                <option value="San Francisco">San Francisco</option>
-                                <option value="New York">New York</option>
-                                <option value="Seattle">Seattle</option>
-                            </select>
-                            <select id="filterIndustry" class="px-4 py-3 border-2 border-slate-300 rounded-lg font-medium focus:outline-none focus:border-blue-500">
-                                <option value="">All Industries</option>
-                                <option value="SaaS">SaaS</option>
-                                <option value="FinTech">FinTech</option>
-                                <option value="Marketing">Marketing</option>
-                            </select>
-                            <input type="text" id="filterTitle" placeholder="Job Title..." class="px-4 py-3 border-2 border-slate-300 rounded-lg font-medium focus:outline-none focus:border-blue-500">
-                            <label class="flex items-center gap-2 px-4 py-3 border-2 border-slate-300 rounded-lg cursor-pointer hover:bg-slate-100">
-                                <input type="checkbox" id="filterVerified" class="w-5 h-5 text-blue-600 rounded">
-                                <span class="font-medium">Verified Only</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Results Header -->
-                    <div class="flex items-center justify-between mb-4 pb-4 border-b-2 border-slate-200">
-                        <div class="text-lg">
-                            <span class="font-black text-blue-600 text-2xl" id="resultCount">8</span>
-                            <span class="text-slate-600 font-medium"> verified leads found</span>
-                            <span class="text-slate-400 text-sm ml-3">•</span>
-                            <span class="text-sm text-slate-500 ml-3"><span id="selectedCount">0</span> selected</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <button onclick="selectAll()" class="px-4 py-2 text-sm border-2 border-slate-300 rounded-lg font-bold hover:bg-slate-50">Select All</button>
-                            <button onclick="exportSelectedLeads()" class="px-5 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700">Export Selected</button>
-                        </div>
-                    </div>
-
-                    <!-- Results -->
-                    <div id="resultsContainer" class="space-y-3 max-h-[500px] overflow-y-auto mb-6">
-                        <!-- Populated by JS -->
-                    </div>
-
-                    <!-- Export All -->
-                    <div class="text-center pt-6 border-t-2 border-slate-200">
-                        <button onclick="exportAllLeads()" class="px-12 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-black text-xl transition-all shadow-xl inline-flex items-center gap-3">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                             </svg>
-                            Download All <span id="exportAllCount">8</span> Leads (CSV)
-                        </button>
+                            <span class="text-slate-700"><strong>2,500 leads/month</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-slate-700">Email verification (90%)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-slate-700">Basic filters</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-slate-700">CSV export</span>
+                        </li>
+                        <li class="flex items-start gap-3 opacity-50">
+                            <svg class="w-6 h-6 text-slate-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-slate-400">AI-powered search</span>
+                        </li>
+                        <li class="flex items-start gap-3 opacity-50">
+                            <svg class="w-6 h-6 text-slate-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-slate-400">Priority support</span>
+                        </li>
+                    </ul>
+
+                    <a href="founding-member.html?plan=basic" 
+                       onclick="trackPlanClick('Basic', 49)"
+                       class="block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg text-center transition-all">
+                        Get Started →
+                    </a>
+                </div>
+
+                <!-- GROWTH TIER -->
+                <div class="bg-white rounded-2xl shadow-lg border-2 border-slate-200 p-8 hover:shadow-xl transition-all">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold mb-2">Growth</h3>
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span class="text-5xl font-black">$99</span>
+                            <span class="text-slate-500">/month</span>
+                        </div>
+                        <p class="text-slate-600">For small teams scaling up</p>
                     </div>
+
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-slate-700"><strong>7,500 leads/month</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-slate-700">Email verification (93%)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-slate-700">Advanced filters</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-slate-700">CRM export + API access</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-slate-700"><strong>AI-powered search</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3 opacity-50">
+                            <svg class="w-6 h-6 text-slate-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-slate-400">Priority support</span>
+                        </li>
+                    </ul>
+
+                    <a href="founding-member.html?plan=growth" 
+                       onclick="trackPlanClick('Growth', 99)"
+                       class="block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg text-center transition-all">
+                        Get Started →
+                    </a>
+                </div>
+
+                <!-- PRO TIER - THE TRIGGER -->
+                <div class="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl shadow-2xl border-2 border-blue-400 p-8 relative transform hover:scale-105 transition-all">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-sm font-black uppercase">
+                            Most Popular
+                        </span>
+                    </div>
+
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold mb-2 text-white">Pro</h3>
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span class="text-5xl font-black text-white">$149</span>
+                            <span class="text-blue-100">/month</span>
+                        </div>
+                        <p class="text-blue-100">For serious sales teams</p>
+                    </div>
+
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-white"><strong>15,000 leads/month</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-white">Email verification (95%+)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-white"><strong>AI-powered search</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-white">Advanced filters + CRM export</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-white">Priority support</span>
+                        </li>
+                    </ul>
+
+                    <!-- THE TRIGGER BUTTON -->
+                    <a href="founding-member.html?plan=pro" 
+                       onclick="trackPlanClick('Pro', 149)"
+                       class="block w-full py-4 bg-white hover:bg-slate-100 text-blue-600 rounded-xl font-black text-lg text-center transition-all shadow-lg">
+                        Get Started →
+                    </a>
                 </div>
             </div>
 
-            <!-- Demo Info -->
-            <div class="mt-8 bg-blue-900 border-2 border-blue-700 rounded-xl p-6 text-center">
-                <p class="text-blue-100 text-lg font-semibold mb-4">
-                    ✨ This is a <span class="text-white font-black">WORKING DEMO</span> with real data. All searches and exports work!
+            <!-- Trust Badge -->
+            <div class="text-center mt-12">
+                <p class="text-slate-500 text-sm">
+                    <svg class="w-5 h-5 inline text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    Cancel anytime • Secure payment via Stripe • 30-day money-back guarantee
                 </p>
-                <div class="grid md:grid-cols-3 gap-4 text-sm text-blue-100">
-                    <div class="bg-blue-800/50 rounded-lg p-3">
-                        <div class="font-bold text-white mb-1">Try searching:</div>
-                        <div>"CTO" • "VP Engineering" • "CMO"</div>
-                    </div>
-                    <div class="bg-blue-800/50 rounded-lg p-3">
-                        <div class="font-bold text-white mb-1">Try locations:</div>
-                        <div>"San Francisco" • "New York"</div>
-                    </div>
-                    <div class="bg-blue-800/50 rounded-lg p-3">
-                        <div class="font-bold text-white mb-1">Try industries:</div>
-                        <div>"SaaS" • "FinTech" • "Marketing"</div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- WALL OF LOVE: Pre-Order Social Proof -->
-    <section class="py-20 px-6 bg-white overflow-hidden">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="inline-block px-4 py-2 bg-emerald-600 text-white rounded-full text-sm font-bold mb-4">💳 REAL PRE-ORDERS - PAID UPFRONT</span>
-                <h2 class="text-5xl font-black mb-4">487 people <span class="text-blue-600">paid $99 before seeing the product</span></h2>
-                <p class="text-xl text-slate-600">These customers believed in the vision and put their money where their mouth is</p>
-            </div>
-
-            <!-- Scrolling Testimonials -->
-            <div class="testimonial-row mb-6 overflow-hidden">
-                <div class="flex gap-6 animate-scroll-left">
-                    <div class="flex gap-6 flex-shrink-0">
-                        <div class="bg-white border-2 border-slate-200 rounded-xl p-6 w-[450px] flex-shrink-0 shadow-lg">
-                            <div class="flex gap-4 mb-4">
-                                <img src="https://i.pravatar.cc/150?img=28" class="w-14 h-14 rounded-full border-2 border-emerald-200">
-                                <div>
-                                    <div class="font-bold text-lg">James Wilson</div>
-                                    <div class="text-sm text-slate-600">@jameswilson • Sales Director</div>
-                                    <div class="text-xs font-bold text-emerald-600 mt-1">✅ PAID $99</div>
-                                </div>
-                            </div>
-                            <p class="text-slate-700 text-lg leading-relaxed">
-                                "Paid instantly. I'm currently paying <span class="font-bold text-red-600">$400/mo</span> for multiple tools. If this delivers on the promise, it's a no-brainer."
-                            </p>
-                        </div>
-                        <div class="bg-white border-2 border-slate-200 rounded-xl p-6 w-[450px] flex-shrink-0 shadow-lg">
-                            <div class="flex gap-4 mb-4">
-                                <img src="https://i.pravatar.cc/150?img=47" class="w-14 h-14 rounded-full border-2 border-emerald-200">
-                                <div>
-                                    <div class="font-bold text-lg">Lisa Chen</div>
-                                    <div class="text-sm text-slate-600">@lisachen • Founder</div>
-                                    <div class="text-xs font-bold text-emerald-600 mt-1">✅ PAID $99</div>
-                                </div>
-                            </div>
-                            <p class="text-slate-700 text-lg leading-relaxed">
-                                "I waste <span class="font-bold">2 hours daily</span> prospecting. $99 to potentially get that back? Worth the bet. Locking in lifetime pricing."
-                            </p>
-                        </div>
-                        <div class="bg-white border-2 border-slate-200 rounded-xl p-6 w-[450px] flex-shrink-0 shadow-lg">
-                            <div class="flex gap-4 mb-4">
-                                <img src="https://i.pravatar.cc/150?img=51" class="w-14 h-14 rounded-full border-2 border-emerald-200">
-                                <div>
-                                    <div class="font-bold text-lg">Marcus Johnson</div>
-                                    <div class="text-sm text-slate-600">@marcusj • BDR</div>
-                                    <div class="text-xs font-bold text-emerald-600 mt-1">✅ PAID $99</div>
-                                </div>
-                            </div>
-                            <p class="text-slate-700 text-lg leading-relaxed">
-                                "Quota is <span class="font-bold">50 leads/week</span>. Pre-ordered because the demo convinced me this will save hours. Plus 60-day guarantee."
-                            </p>
-                        </div>
-                        <div class="bg-white border-2 border-slate-200 rounded-xl p-6 w-[450px] flex-shrink-0 shadow-lg">
-                            <div class="flex gap-4 mb-4">
-                                <img src="https://i.pravatar.cc/150?img=33" class="w-14 h-14 rounded-full border-2 border-emerald-200">
-                                <div>
-                                    <div class="font-bold text-lg">Sarah Kim</div>
-                                    <div class="text-sm text-slate-600">@sarahkim • VP Sales</div>
-                                    <div class="text-xs font-bold text-emerald-600 mt-1">✅ PAID $99</div>
-                                </div>
-                            </div>
-                            <p class="text-slate-700 text-lg leading-relaxed">
-                                "Locked in the founder pricing. Even if it saves me <span class="font-bold">1 hour/week</span>, ROI is massive. Love the transparency."
-                            </p>
-                        </div>
-                        <div class="bg-white border-2 border-slate-200 rounded-xl p-6 w-[450px] flex-shrink-0 shadow-lg">
-                            <div class="flex gap-4 mb-4">
-                                <img src="https://i.pravatar.cc/150?img=19" class="w-14 h-14 rounded-full border-2 border-emerald-200">
-                                <div>
-                                    <div class="font-bold text-lg">Tom Rodriguez</div>
-                                    <div class="text-sm text-slate-600">@tomrodriguez • Growth Lead</div>
-                                    <div class="text-xs font-bold text-emerald-600 mt-1">✅ PAID $99</div>
-                                </div>
-                            </div>
-                            <p class="text-slate-700 text-lg leading-relaxed">
-                                "The working demo sold me. Plus Ayoub's sharing his tech stack and building in public. That's rare. Pre-ordered day 1."
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex gap-6 flex-shrink-0">
-                        <div class="bg-white border-2 border-slate-200 rounded-xl p-6 w-[450px] flex-shrink-0 shadow-lg">
-                            <div class="flex gap-4 mb-4">
-                                <img src="https://i.pravatar.cc/150?img=28" class="w-14 h-14 rounded-full border-2 border-emerald-200">
-                                <div>
-                                    <div class="font-bold text-lg">James Wilson</div>
-                                    <div class="text-sm text-slate-600">@jameswilson • Sales Director</div>
-                                    <div class="text-xs font-bold text-emerald-600 mt-1">✅ PAID $99</div>
-                                </div>
-                            </div>
-                            <p class="text-slate-700 text-lg leading-relaxed">
-                                "Paid instantly. I'm currently paying <span class="font-bold text-red-600">$400/mo</span> for multiple tools. If this delivers on the promise, it's a no-brainer."
-                            </p>
-                        </div>
-                        <div class="bg-white border-2 border-slate-200 rounded-xl p-6 w-[450px] flex-shrink-0 shadow-lg">
-                            <div class="flex gap-4 mb-4">
-                                <img src="https://i.pravatar.cc/150?img=47" class="w-14 h-14 rounded-full border-2 border-emerald-200">
-                                <div>
-                                    <div class="font-bold text-lg">Lisa Chen</div>
-                                    <div class="text-sm text-slate-600">@lisachen • Founder</div>
-                                    <div class="text-xs font-bold text-emerald-600 mt-1">✅ PAID $99</div>
-                                </div>
-                            </div>
-                            <p class="text-slate-700 text-lg leading-relaxed">
-                                "I waste <span class="font-bold">2 hours daily</span> prospecting. $99 to potentially get that back? Worth the bet. Locking in lifetime pricing."
-                            </p>
-                        </div>
-                        <div class="bg-white border-2 border-slate-200 rounded-xl p-6 w-[450px] flex-shrink-0 shadow-lg">
-                            <div class="flex gap-4 mb-4">
-                                <img src="https://i.pravatar.cc/150?img=51" class="w-14 h-14 rounded-full border-2 border-emerald-200">
-                                <div>
-                                    <div class="font-bold text-lg">Marcus Johnson</div>
-                                    <div class="text-sm text-slate-600">@marcusj • BDR</div>
-                                    <div class="text-xs font-bold text-emerald-600 mt-1">✅ PAID $99</div>
-                                </div>
-                            </div>
-                            <p class="text-slate-700 text-lg leading-relaxed">
-                                "Quota is <span class="font-bold">50 leads/week</span>. Pre-ordered because the demo convinced me this will save hours. Plus 60-day guarantee."
-                            </p>
-                        </div>
-                        <div class="bg-white border-2 border-slate-200 rounded-xl p-6 w-[450px] flex-shrink-0 shadow-lg">
-                            <div class="flex gap-4 mb-4">
-                                <img src="https://i.pravatar.cc/150?img=33" class="w-14 h-14 rounded-full border-2 border-emerald-200">
-                                <div>
-                                    <div class="font-bold text-lg">Sarah Kim</div>
-                                    <div class="text-sm text-slate-600">@sarahkim • VP Sales</div>
-                                    <div class="text-xs font-bold text-emerald-600 mt-1">✅ PAID $99</div>
-                                </div>
-                            </div>
-                            <p class="text-slate-700 text-lg leading-relaxed">
-                                "Locked in the founder pricing. Even if it saves me <span class="font-bold">1 hour/week</span>, ROI is massive. Love the transparency."
-                            </p>
-                        </div>
-                        <div class="bg-white border-2 border-slate-200 rounded-xl p-6 w-[450px] flex-shrink-0 shadow-lg">
-                            <div class="flex gap-4 mb-4">
-                                <img src="https://i.pravatar.cc/150?img=19" class="w-14 h-14 rounded-full border-2 border-emerald-200">
-                                <div>
-                                    <div class="font-bold text-lg">Tom Rodriguez</div>
-                                    <div class="text-sm text-slate-600">@tomrodriguez • Growth Lead</div>
-                                    <div class="text-xs font-bold text-emerald-600 mt-1">✅ PAID $99</div>
-                                </div>
-                            </div>
-                            <p class="text-slate-700 text-lg leading-relaxed">
-                                "The working demo sold me. Plus Ayoub's sharing his tech stack and building in public. That's rare. Pre-ordered day 1."
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- HOW IT WORKS: Paint vs Gain -->
-    <section class="py-20 px-6 bg-slate-50">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-black mb-4">Stop paying <span class="text-red-600">$500+/month</span> for this</h2>
-                <p class="text-xl text-slate-600">Here's what sales teams actually pay for lead generation</p>
-            </div>
-
-            <!-- COMPETITOR COMPARISON TABLE - This is GOLD -->
-            <div class="bg-white rounded-2xl shadow-xl border-2 border-slate-200 overflow-hidden mb-12">
-                <table class="w-full">
-                    <thead class="bg-slate-100 border-b-2 border-slate-300">
-                        <tr>
-                            <th class="px-6 py-4 text-left font-bold text-lg">Tool</th>
-                            <th class="px-6 py-4 text-center font-bold text-lg">Leads/Month</th>
-                            <th class="px-6 py-4 text-center font-bold text-lg">Email Finder</th>
-                            <th class="px-6 py-4 text-right font-bold text-lg">Price/Month</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-200">
-                        <tr class="hover:bg-slate-50">
-                            <td class="px-6 py-4 font-semibold">Apollo.io</td>
-                            <td class="px-6 py-4 text-center">10,000</td>
-                            <td class="px-6 py-4 text-center">❌ Extra $49/mo</td>
-                            <td class="px-6 py-4 text-right font-bold text-red-600">$149/mo</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50">
-                            <td class="px-6 py-4 font-semibold">Hunter.io</td>
-                            <td class="px-6 py-4 text-center">N/A</td>
-                            <td class="px-6 py-4 text-center">5,000 emails</td>
-                            <td class="px-6 py-4 text-right font-bold text-red-600">$49/mo</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50">
-                            <td class="px-6 py-4 font-semibold">LinkedIn Sales Nav</td>
-                            <td class="px-6 py-4 text-center">Unlimited</td>
-                            <td class="px-6 py-4 text-center">❌ No emails</td>
-                            <td class="px-6 py-4 text-right font-bold text-red-600">$99/mo</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50">
-                            <td class="px-6 py-4 font-semibold">ZoomInfo</td>
-                            <td class="px-6 py-4 text-center">Custom</td>
-                            <td class="px-6 py-4 text-center">✅ Included</td>
-                            <td class="px-6 py-4 text-right font-bold text-red-600">$15,000/year</td>
-                        </tr>
-                        <tr class="bg-emerald-50 border-2 border-emerald-400">
-                            <td class="px-6 py-4 font-black text-lg text-emerald-900">LeadFast</td>
-                            <td class="px-6 py-4 text-center font-bold text-emerald-900">15,000</td>
-                            <td class="px-6 py-4 text-center font-bold text-emerald-900">✅ Included</td>
-                            <td class="px-6 py-4 text-right font-black text-2xl text-emerald-600">$99/mo</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- ACTUAL COST BREAKDOWN -->
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- OLD WAY -->
-                <div class="bg-white border-4 border-red-200 rounded-2xl p-8">
-                    <div class="text-5xl mb-4">💸</div>
-                    <h3 class="text-3xl font-black mb-6 text-red-900">Current Stack Cost</h3>
-                    <div class="space-y-3 mb-8">
-                        <div class="flex justify-between items-center text-lg">
-                            <span>LinkedIn Sales Navigator</span>
-                            <span class="font-bold">$99/mo</span>
-                        </div>
-                        <div class="flex justify-between items-center text-lg">
-                            <span>Apollo.io (Professional)</span>
-                            <span class="font-bold">$149/mo</span>
-                        </div>
-                        <div class="flex justify-between items-center text-lg">
-                            <span>Hunter.io</span>
-                            <span class="font-bold">$49/mo</span>
-                        </div>
-                        <div class="flex justify-between items-center text-lg text-slate-500">
-                            <span>Your time (15h/week × $50/hr)</span>
-                            <span class="font-bold">$3,000/mo</span>
-                        </div>
-                    </div>
-                    <div class="pt-6 border-t-4 border-red-300">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold">Total per month:</span>
-                            <div class="text-4xl font-black text-red-900">$3,297</div>
-                        </div>
-                        <div class="text-right text-slate-600 text-sm mt-1">$39,564/year</div>
-                    </div>
-                </div>
-
-                <!-- LEADFAST WAY -->
-                <div class="bg-gradient-to-br from-emerald-50 to-blue-50 border-4 border-emerald-300 rounded-2xl p-8 shadow-2xl transform hover:scale-105 transition-transform">
-                    <div class="text-5xl mb-4">🎯</div>
-                    <h3 class="text-3xl font-black mb-6 text-emerald-900">LeadFast All-in-One</h3>
-                    <div class="space-y-3 mb-8">
-                        <div class="flex justify-between items-center text-lg">
-                            <span class="font-semibold">✅ LinkedIn lead finding</span>
-                            <span class="font-bold text-emerald-600">Included</span>
-                        </div>
-                        <div class="flex justify-between items-center text-lg">
-                            <span class="font-semibold">✅ Email verification (95%+)</span>
-                            <span class="font-bold text-emerald-600">Included</span>
-                        </div>
-                        <div class="flex justify-between items-center text-lg">
-                            <span class="font-semibold">✅ CRM export</span>
-                            <span class="font-bold text-emerald-600">Included</span>
-                        </div>
-                        <div class="flex justify-between items-center text-lg">
-                            <span class="font-semibold">✅ Your time saved</span>
-                            <span class="font-bold text-emerald-600">14h/week</span>
-                        </div>
-                    </div>
-                    <div class="pt-6 border-t-4 border-emerald-400">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold">Total per month:</span>
-                            <div class="text-4xl font-black text-emerald-900">$99</div>
-                        </div>
-                        <div class="text-right text-emerald-700 font-bold text-lg mt-1">Save $3,198/month</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ROI CALCULATOR -->
-            <div class="mt-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
-                <h3 class="text-3xl font-black mb-4">If you close just ONE extra deal per month...</h3>
-                <p class="text-xl mb-6">LeadFast pays for itself <span class="text-yellow-300 font-black">20X over</span></p>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div>
-                        <div class="text-4xl font-black mb-2">14</div>
-                        <div class="text-sm opacity-90">Hours saved per week</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-black mb-2">$3,198</div>
-                        <div class="text-sm opacity-90">Saved per month</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-black mb-2">$38,376</div>
-                        <div class="text-sm opacity-90">Saved per year</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURES: Tech Stack Transparency -->
+    <!-- FEATURES -->
     <section class="py-20 px-6 bg-white">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-5xl font-black mb-4">Everything you need <span class="text-blue-600">in one tool</span></h2>
-                <p class="text-xl text-slate-600">No more paying for 5 different subscriptions</p>
+                <h2 class="text-5xl font-black mb-4">Everything you need in one tool</h2>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-8 hover:border-blue-400 hover:shadow-xl transition-all">
                     <div class="text-5xl mb-4">🤖</div>
                     <h3 class="text-2xl font-bold mb-3">AI-Powered Search</h3>
-                    <p class="text-slate-600 text-lg leading-relaxed">Natural language: "Find CMOs at Series A fintech companies" - AI does the rest</p>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Natural language: "Find CMOs at Series A fintech companies in NYC"
+                    </p>
                 </div>
 
                 <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-8 hover:border-blue-400 hover:shadow-xl transition-all">
                     <div class="text-5xl mb-4">✉️</div>
                     <h3 class="text-2xl font-bold mb-3">Email Verification</h3>
-                    <p class="text-slate-600 text-lg leading-relaxed">95%+ accuracy. Real work emails. No bounces.</p>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        95%+ accuracy. Real work emails. No bounces.
+                    </p>
                 </div>
 
                 <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-8 hover:border-blue-400 hover:shadow-xl transition-all">
                     <div class="text-5xl mb-4">📊</div>
-                    <h3 class="text-2xl font-bold mb-3">One-Click CSV Export</h3>
-                    <p class="text-slate-600 text-lg leading-relaxed">Import directly to Salesforce, HubSpot, any CRM</p>
-                </div>
-
-                <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-8 hover:border-blue-400 hover:shadow-xl transition-all">
-                    <div class="text-5xl mb-4">🎯</div>
-                    <h3 class="text-2xl font-bold mb-3">Advanced Filters</h3>
-                    <p class="text-slate-600 text-lg leading-relaxed">Title, location, company size, industry, seniority</p>
-                </div>
-
-                <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-8 hover:border-blue-400 hover:shadow-xl transition-all">
-                    <div class="text-5xl mb-4">⚡</div>
-                    <h3 class="text-2xl font-bold mb-3">Bulk Processing</h3>
-                    <p class="text-slate-600 text-lg leading-relaxed">500 leads/day. No manual work.</p>
-                </div>
-
-                <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-8 hover:border-blue-400 hover:shadow-xl transition-all">
-                    <div class="text-5xl mb-4">🔄</div>
-                    <h3 class="text-2xl font-bold mb-3">Auto-Update</h3>
-                    <p class="text-slate-600 text-lg leading-relaxed">Notified when people change jobs</p>
-                </div>
-            </div>
-
-            <!-- Tech Stack -->
-            <div class="bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-8 text-center">
-                <h3 class="text-2xl font-bold text-white mb-4">Built with production-grade tech</h3>
-                <div class="flex flex-wrap justify-center gap-4 text-sm">
-                    <span class="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white font-semibold">React</span>
-                    <span class="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white font-semibold">Next.js</span>
-                    <span class="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white font-semibold">TypeScript</span>
-                    <span class="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white font-semibold">OpenAI API</span>
-                    <span class="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white font-semibold">Stripe</span>
-                    <span class="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white font-semibold">PostgreSQL</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRICING: Price Anchoring + Urgency -->
-    <section id="pricing" class="py-20 px-6 bg-gradient-to-br from-blue-600 to-indigo-600">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="inline-block px-4 py-2 bg-yellow-400 text-yellow-900 rounded-full text-sm font-black mb-4 animate-pulse">⚡ FOUNDER PRICING ENDS IN:</span>
-                
-                <!-- COUNTDOWN TIMER - Massive conversion boost -->
-                <div id="countdown" class="flex justify-center gap-4 mb-6">
-                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4 min-w-[80px]">
-                        <div id="days" class="text-4xl font-black text-white">02</div>
-                        <div class="text-xs text-blue-100 uppercase tracking-wide">Days</div>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4 min-w-[80px]">
-                        <div id="hours" class="text-4xl font-black text-white">14</div>
-                        <div class="text-xs text-blue-100 uppercase tracking-wide">Hours</div>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4 min-w-[80px]">
-                        <div id="minutes" class="text-4xl font-black text-white">37</div>
-                        <div class="text-xs text-blue-100 uppercase tracking-wide">Minutes</div>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4 min-w-[80px]">
-                        <div id="seconds" class="text-4xl font-black text-white">22</div>
-                        <div class="text-xs text-blue-100 uppercase tracking-wide">Seconds</div>
-                    </div>
-                </div>
-
-                <h2 class="text-5xl md:text-6xl font-black text-white mb-4">Lock in $99/mo <span class="text-yellow-300">forever</span></h2>
-                <p class="text-2xl text-blue-100">After this, price goes to $299/mo. No exceptions.</p>
-            </div>
-
-            <div class="bg-white rounded-3xl p-10 shadow-2xl">
-                <!-- SPOTS REMAINING - Creates scarcity -->
-                <div class="mb-6 p-4 bg-red-50 border-2 border-red-200 rounded-xl text-center">
-                    <p class="text-red-900 font-bold text-lg">
-                        ⚠️ Only <span class="text-3xl font-black">13</span> lifetime spots remaining at this price
+                    <h3 class="text-2xl font-bold mb-3">One-Click Export</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Import directly to Salesforce, HubSpot, any CRM
                     </p>
                 </div>
-
-                <!-- Price Comparison -->
-                <div class="text-center mb-8">
-                    <div class="inline-block">
-                        <div class="text-2xl font-bold text-slate-400 line-through mb-2">$299/month</div>
-                        <div class="text-7xl font-black text-blue-600 mb-2">$99<span class="text-4xl">/mo</span></div>
-                        <div class="text-xl font-bold text-emerald-600">Save $2,400/year (67% OFF)</div>
-                    </div>
-                </div>
-
-                <!-- What's Included -->
-                <div class="space-y-4 mb-10">
-                    <div class="flex items-start gap-4">
-                        <svg class="w-7 h-7 text-emerald-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <div>
-                            <div class="font-bold text-lg">500 verified leads per day</div>
-                            <div class="text-slate-600">15,000/month - enough for most teams</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <svg class="w-7 h-7 text-emerald-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <div>
-                            <div class="font-bold text-lg">AI-powered search + 95% email accuracy</div>
-                            <div class="text-slate-600">No more bounced emails</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <svg class="w-7 h-7 text-emerald-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <div>
-                            <div class="font-bold text-lg">Unlimited CSV exports to any CRM</div>
-                            <div class="text-slate-600">Salesforce, HubSpot, Pipedrive, etc.</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <svg class="w-7 h-7 text-emerald-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <div>
-                            <div class="font-bold text-lg">$99/month locked in forever</div>
-                            <div class="text-slate-600">Price NEVER increases for you</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CTA -->
-                <button onclick="window.location.href='https://buy.stripe.com/test_YOURLINK'" class="w-full py-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-2xl font-black text-2xl shadow-2xl transition-all transform hover:scale-105 mb-6">
-                    Lock in $99/mo Forever →
-                </button>
-
-                <!-- Guarantees -->
-                <div class="flex flex-col md:flex-row justify-center gap-6 text-sm text-slate-600 text-center">
-                    <div class="flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="font-semibold">60-day money-back guarantee</span>
-                    </div>
-                    <div class="flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="font-semibold">Cancel anytime (no questions)</span>
-                    </div>
-                    <div class="flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="font-semibold">Launch: Q1 2025</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Countdown timer - Set to 3 days from now
-        const countdownDate = new Date().getTime() + (3 * 24 * 60 * 60 * 1000);
-        
-        const timer = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            document.getElementById("days").textContent = String(days).padStart(2, '0');
-            document.getElementById("hours").textContent = String(hours).padStart(2, '0');
-            document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
-            document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
-            
-            if (distance < 0) {
-                clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "<div class='text-white text-2xl font-bold'>Offer Expired!</div>";
-            }
-        }, 1000);
-    </script>
-
-    <!-- FAQ: Objection Killer -->
-    <section class="py-20 px-6 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-black mb-4">Questions? <span class="text-blue-600">Answered.</span></h2>
-                <p class="text-xl text-slate-600">Everything you need to know before buying</p>
-            </div>
-
-            <div class="space-y-4">
-                <!-- FAQ 1 -->
-                <div class="bg-slate-50 border-2 border-slate-200 rounded-xl overflow-hidden">
-                    <button onclick="toggleFAQ(1)" class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-100 transition-colors">
-                        <span class="font-bold text-xl">Can I get a refund if it doesn't work for me?</span>
-                        <svg id="faq-icon-1" class="w-7 h-7 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div id="faq-content-1" class="hidden px-8 pb-6">
-                        <p class="text-lg text-slate-700 leading-relaxed">
-                            Yes. <span class="font-bold">60-day money-back guarantee</span>. If LeadFast doesn't work for you after launch, just email us and we'll refund every penny. No questions asked, no hard feelings.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ 2 -->
-                <div class="bg-slate-50 border-2 border-slate-200 rounded-xl overflow-hidden">
-                    <button onclick="toggleFAQ(2)" class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-100 transition-colors">
-                        <span class="font-bold text-xl">I'm not technical. Can I still use this?</span>
-                        <svg id="faq-icon-2" class="w-7 h-7 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div id="faq-content-2" class="hidden px-8 pb-6">
-                        <p class="text-lg text-slate-700 leading-relaxed">
-                            Absolutely. LeadFast is built for <span class="font-bold">salespeople, not developers</span>. If you can use LinkedIn, you can use LeadFast. Type a search, click export, done. Plus you get 1-on-1 onboarding when you join.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ 3 -->
-                <div class="bg-slate-50 border-2 border-slate-200 rounded-xl overflow-hidden">
-                    <button onclick="toggleFAQ(3)" class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-100 transition-colors">
-                        <span class="font-bold text-xl">How accurate are the emails?</span>
-                        <svg id="faq-icon-3" class="w-7 h-7 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div id="faq-content-3" class="hidden px-8 pb-6">
-                        <p class="text-lg text-slate-700 leading-relaxed">
-                            <span class="font-bold">95%+ accuracy</span>. We use AI pattern recognition + real-time verification to find work emails. Every email is verified before we show it to you. If an email bounces, report it and we'll investigate.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ 4 -->
-                <div class="bg-slate-50 border-2 border-slate-200 rounded-xl overflow-hidden">
-                    <button onclick="toggleFAQ(4)" class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-100 transition-colors">
-                        <span class="font-bold text-xl">When do I get access?</span>
-                        <svg id="faq-icon-4" class="w-7 h-7 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div id="faq-content-4" class="hidden px-8 pb-6">
-                        <p class="text-lg text-slate-700 leading-relaxed">
-                            <span class="font-bold">Q1 2025</span> (January-March). All pre-order customers get <span class="font-bold">early access</span> before the public launch + priority onboarding support. We'll keep you updated via email throughout development.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ 5 -->
-                <div class="bg-slate-50 border-2 border-slate-200 rounded-xl overflow-hidden">
-                    <button onclick="toggleFAQ(5)" class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-100 transition-colors">
-                        <span class="font-bold text-xl">Will the price really stay $99 forever?</span>
-                        <svg id="faq-icon-5" class="w-7 h-7 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div id="faq-content-5" class="hidden px-8 pb-6">
-                        <p class="text-lg text-slate-700 leading-relaxed">
-                            Yes. <span class="font-bold">$99/month locked in for life</span>. Even when we raise the price to $299/mo after launch, you'll still pay $99. This is our way of rewarding early believers who took a chance on us.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ 6 -->
-                <div class="bg-slate-50 border-2 border-slate-200 rounded-xl overflow-hidden">
-                    <button onclick="toggleFAQ(6)" class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-100 transition-colors">
-                        <span class="font-bold text-xl">Is this compliant with LinkedIn's terms?</span>
-                        <svg id="faq-icon-6" class="w-7 h-7 text-blue-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div id="faq-content-6" class="hidden px-8 pb-6">
-                        <p class="text-lg text-slate-700 leading-relaxed">
-                            Yes. LeadFast uses <span class="font-bold">publicly available data</span> and complies with GDPR, CCPA, and all data protection regulations. We don't use scraping bots. Our AI processes information that LinkedIn users have chosen to make public.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Still have questions -->
-            <div class="mt-16 text-center bg-blue-50 border-2 border-blue-200 rounded-2xl p-10">
-                <h3 class="text-2xl font-bold mb-3">Still have questions?</h3>
-                <p class="text-slate-600 text-lg mb-6">Email me directly. I respond to every message.</p>
-                <a href="/cdn-cgi/l/email-protection#1f7e66706a7d5f737a7e7b797e6c6b317670" class="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg transition-colors">
-                    <span class="__cf_email__" data-cfemail="b9d8c0d6ccdbf9d5dcd8dddfd8cacd97d0d6">[email&#160;protected]</span>
-                </a>
             </div>
         </div>
     </section>
@@ -1204,6 +828,22 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Experience Highlights -->
+                    <div class="mt-8 grid md:grid-cols-3 gap-6">
+                        <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                            <div class="text-2xl font-black text-blue-600 mb-1">3+ Years</div>
+                            <div class="text-sm text-slate-600">Building distributed systems & SaaS products</div>
+                        </div>
+                        <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                            <div class="text-2xl font-black text-blue-600 mb-1">Senior Engineer</div>
+                            <div class="text-sm text-slate-600">At Additess (Morocco LLC)</div>
+                        </div>
+                        <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                            <div class="text-2xl font-black text-blue-600 mb-1">Tech Stack</div>
+                            <div class="text-sm text-slate-600">Python • FastAPI • Kafka • React • AWS</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1217,33 +857,169 @@
         </div>
     </section>
 
-    <!-- FINAL CTA -->
+    <!-- FAQ SECTION -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black mb-4">Questions? <span class="text-blue-600">Answered.</span></h2>
+                <p class="text-xl text-slate-600">Everything you need to know before choosing a plan</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <details class="bg-slate-50 rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-xl cursor-pointer list-none flex items-center justify-between">
+                        <span>How does the email verification work?</span>
+                        <svg class="w-7 h-7 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-lg text-slate-700 leading-relaxed">
+                        We use AI pattern recognition combined with real-time verification to find and validate work emails. Every email is checked before we show it to you, ensuring <strong>95%+ accuracy</strong>. If an email bounces, report it and we'll investigate immediately.
+                    </p>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details class="bg-slate-50 rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-xl cursor-pointer list-none flex items-center justify-between">
+                        <span>Can I export leads to my CRM?</span>
+                        <svg class="w-7 h-7 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-lg text-slate-700 leading-relaxed">
+                        Yes! LeadFast exports to CSV format which works with <strong>any CRM</strong>: Salesforce, HubSpot, Pipedrive, Copper, and more. One-click export, then import directly into your sales system. Growth and Pro plans also include API access for automated workflows.
+                    </p>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details class="bg-slate-50 rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-xl cursor-pointer list-none flex items-center justify-between">
+                        <span>What makes LeadFast different from Apollo or ZoomInfo?</span>
+                        <svg class="w-7 h-7 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-lg text-slate-700 leading-relaxed">
+                        Three key differences: (1) <strong>AI-powered natural language search</strong> - just describe who you're looking for in plain English. (2) <strong>Better price</strong> - we're 50-80% cheaper than competitors. (3) <strong>Built for small teams</strong> - no enterprise complexity, just fast lead generation.
+                    </p>
+                </details>
+
+                <!-- FAQ 4 -->
+                <details class="bg-slate-50 rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-xl cursor-pointer list-none flex items-center justify-between">
+                        <span>Do you offer refunds?</span>
+                        <svg class="w-7 h-7 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-lg text-slate-700 leading-relaxed">
+                        Yes. <strong>30-day money-back guarantee</strong>, no questions asked. If LeadFast doesn't work for you, just email us and we'll refund every penny. We also offer prorated refunds if you cancel mid-month.
+                    </p>
+                </details>
+
+                <!-- FAQ 5 -->
+                <details class="bg-slate-50 rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-xl cursor-pointer list-none flex items-center justify-between">
+                        <span>Is this compliant with LinkedIn's terms and GDPR?</span>
+                        <svg class="w-7 h-7 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-lg text-slate-700 leading-relaxed">
+                        Yes. LeadFast uses <strong>publicly available data</strong> that LinkedIn users have chosen to make public. We comply with GDPR, CCPA, and all data protection regulations. We don't use scraping bots - our AI processes information that's already publicly accessible.
+                    </p>
+                </details>
+
+                <!-- FAQ 6 -->
+                <details class="bg-slate-50 rounded-xl border-2 border-slate-200 p-6 group">
+                    <summary class="font-bold text-xl cursor-pointer list-none flex items-center justify-between">
+                        <span>Can I upgrade or downgrade my plan?</span>
+                        <svg class="w-7 h-7 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-lg text-slate-700 leading-relaxed">
+                        Absolutely. You can upgrade or downgrade anytime from your dashboard. <strong>Upgrades are immediate</strong>, downgrades take effect at the next billing cycle. We'll prorate charges if you upgrade mid-month.
+                    </p>
+                </details>
+            </div>
+
+            <!-- Still have questions -->
+            <div class="mt-16 text-center bg-blue-50 border-2 border-blue-200 rounded-2xl p-10">
+                <h3 class="text-2xl font-bold mb-3">Still have questions?</h3>
+                <p class="text-slate-600 text-lg mb-6">Email us directly. We respond to every message within 24 hours.</p>
+                <a href="mailto:ayoub@leadfast.io" class="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-lg transition-colors">
+                    ayoub@leadfast.io
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
     <section class="py-20 px-6 bg-gradient-to-r from-blue-600 to-indigo-600">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-5xl md:text-6xl font-black text-white mb-6">
-                Stop wasting time.<br>
-                Start closing deals.
+                Ready to stop wasting time?
             </h2>
             <p class="text-2xl text-blue-100 mb-10">
-                Join 487 sales teams who locked in $99/mo forever
+                Choose your plan and start finding leads in minutes
             </p>
             <a href="#pricing" class="inline-block px-12 py-6 bg-white hover:bg-slate-100 text-blue-600 rounded-full font-black text-2xl shadow-2xl transition-all transform hover:scale-105">
-                Get LeadFast Now →
+                See Pricing →
             </a>
-            <p class="text-blue-100 mt-6">
-                60-day money-back guarantee • Cancel anytime • Launch Q1 2025
-            </p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="py-12 px-6 border-t border-slate-200 bg-white">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white text-xl font-bold">🎯</div>
-                <span class="text-xl font-bold">LeadFast</span>
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white text-xl font-bold">🎯</div>
+                        <span class="text-xl font-bold">LeadFast</span>
+                    </div>
+                    <p class="text-slate-600 text-sm">
+                        Find 500 LinkedIn leads daily in 30 seconds. Built by <a href="https://www.linkedin.com/in/ayoub-samil-5a86bb239/" target="_blank" class="text-blue-600 hover:underline">Ayoub Samil</a>.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#demo" class="text-slate-600 hover:text-blue-600">Demo</a></li>
+                        <li><a href="#pricing" class="text-slate-600 hover:text-blue-600">Pricing</a></li>
+                        <li><a href="#faq" class="text-slate-600 hover:text-blue-600">FAQ</a></li>
+                        <li><a href="analytics.html" class="text-slate-600 hover:text-blue-600">Analytics Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold mb-4">Get in Touch</h4>
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <a href="mailto:ayoub@leadfast.io" class="text-blue-600 hover:underline font-medium">ayoub@leadfast.io</a>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://www.linkedin.com/in/ayoub-samil-5a86bb239/" target="_blank" class="text-slate-600 hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            </a>
+                            <a href="https://twitter.com/yourusername" target="_blank" class="text-slate-600 hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="text-slate-500 text-sm">© 2025 LeadFast. All rights reserved.</div>
+
+            <!-- Bottom -->
+            <div class="pt-8 border-t border-slate-200 text-center text-slate-500 text-sm">
+                <p>© 2025 LeadFast • Built by <a href="https://www.linkedin.com/in/ayoub-samil-5a86bb239/" target="_blank" class="text-blue-600 hover:underline">Ayoub Samil</a> • Based in Agadir, Morocco</p>
+            </div>
         </div>
     </footer>
 
