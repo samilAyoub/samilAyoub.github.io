@@ -97,6 +97,41 @@
             });
             localStorage.setItem('stripe_clicks', JSON.stringify(clicks));
         }
+
+        function handleWaitlistSubmit(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('waitlistEmail').value;
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan') || 'pro';
+            
+            console.log('Waitlist signup:', email, 'Plan:', plan);
+            
+            // Store waitlist signup locally
+            const waitlist = JSON.parse(localStorage.getItem('waitlist_signups') || '[]');
+            waitlist.push({
+                email: email,
+                timestamp: new Date().toISOString(),
+                plan: plan,
+                source: 'founding_page'
+            });
+            localStorage.setItem('waitlist_signups', JSON.stringify(waitlist));
+            
+            // TODO: In production, send this to your backend/email service
+            // Example: fetch('/api/waitlist', { method: 'POST', body: JSON.stringify({ email, plan }) })
+            
+            // Show success message
+            document.getElementById('waitlistForm').classList.add('hidden');
+            document.getElementById('waitlistSuccess').classList.remove('hidden');
+            
+            // Optional: Track conversion
+            if (window.gtag) {
+                gtag('event', 'waitlist_signup', {
+                    'event_category': 'conversion',
+                    'event_label': plan
+                });
+            }
+        }
     </script>
 </head>
 <body class="font-sans bg-gradient-to-br from-slate-50 to-blue-50">
@@ -267,6 +302,57 @@
                         </svg>
                         <span class="font-semibold">Secure payment via Stripe</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- Alternative: Join Waitlist -->
+            <div class="mt-12 bg-gradient-to-br from-slate-100 to-slate-200 border-2 border-slate-300 rounded-2xl p-8">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-black mb-3">Not Ready to Commit?</h3>
+                    <p class="text-lg text-slate-700 max-w-2xl mx-auto">
+                        Join the <strong>free waitlist</strong> instead. I'll notify you when LeadFast launches (but you'll pay full price).
+                    </p>
+                </div>
+
+                <form id="waitlistForm" class="max-w-md mx-auto" onsubmit="handleWaitlistSubmit(event)">
+                    <div class="flex gap-3">
+                        <input 
+                            type="email" 
+                            id="waitlistEmail"
+                            placeholder="Enter your email"
+                            required
+                            class="flex-1 px-4 py-3 rounded-lg border-2 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-lg"
+                        >
+                        <button 
+                            type="submit"
+                            class="px-6 py-3 bg-slate-700 hover:bg-slate-800 text-white font-bold rounded-lg transition-colors whitespace-nowrap"
+                        >
+                            Join Waitlist
+                        </button>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3 text-center">
+                        No spam. Just a launch notification when we're ready.
+                    </p>
+                </form>
+
+                <div id="waitlistSuccess" class="hidden max-w-md mx-auto">
+                    <div class="bg-emerald-100 border-2 border-emerald-300 rounded-lg p-4 text-center">
+                        <svg class="w-12 h-12 text-emerald-600 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <h4 class="font-bold text-lg text-emerald-900 mb-1">You're on the list!</h4>
+                        <p class="text-emerald-800">I'll email you when LeadFast launches.</p>
+                        <p class="text-sm text-emerald-700 mt-3">
+                            <strong>Changed your mind?</strong> Founding member offer is still available above. ↑
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-slate-600">
+                        <strong>Heads up:</strong> Waitlist members pay $149/month after launch.<br>
+                        Founding members pay $99 once and get lifetime access. 🤷‍♂️
+                    </p>
                 </div>
             </div>
 
