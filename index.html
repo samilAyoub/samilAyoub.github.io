@@ -1,60 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RedditRevenue - Stop Paying for AI Slop Alerts. Start Closing Reddit Leads.</title>
+    <title>RedditRevenue | The High-Intent Lead Engine</title>
+    <meta name="description" content="Stop keywords. Start reasoning. Get the 5 leads per week that actually close.">
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Get 5 high-intent Reddit leads per week with AI reasoning, not 100+ useless keyword alerts. Early adopter lifetime access: $297 (switches to $49/mo after 50 users).">
-    <meta name="keywords" content="reddit leads, reddit marketing, lead generation, reddit automation, saas marketing, reddit lead gen">
-    <meta name="author" content="Ayoub Samil">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.com/">
-    <meta property="og:title" content="RedditRevenue - Stop Paying for AI Slop Alerts">
-    <meta property="og:description" content="Get 5 high-intent Reddit leads per week with AI reasoning. Early adopter lifetime access: $297 (limited to 50 users).">
-    <meta property="og:image" content="https://yourdomain.com/og-image.png">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourdomain.com/">
-    <meta property="twitter:title" content="RedditRevenue - Stop Paying for AI Slop Alerts">
-    <meta property="twitter:description" content="Get 5 high-intent Reddit leads per week with AI reasoning. Early adopter lifetime access: $297">
-    <meta property="twitter:image" content="https://yourdomain.com/twitter-image.png">
-    
-    <!-- Favicon (Update with your actual favicon) -->
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    <!-- Google Analytics 4 - REPLACE G-XXXXXXXXXX with your actual ID -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    -->
-    
-    <!-- OR use Plausible Analytics (Privacy-friendly alternative) -->
-    <!-- <script defer data-domain="yourdomain.com" src="https://plausible.io/js/script.js"></script> -->
-    
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite',
-                        'slide-up': 'slide-up 0.5s ease-out',
-                        'fade-in': 'fade-in 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
@@ -62,1229 +26,279 @@
     </script>
     
     <style>
-        html { scroll-behavior: smooth; }
-        section[id] { scroll-margin-top: 80px; }
-        
-        /* Advanced Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.4); }
-            50% { box-shadow: 0 0 40px rgba(249, 115, 22, 0.6); }
-        }
-        
-        @keyframes slide-up {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        @keyframes fade-in {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes pulse-subtle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.05); }
-        }
-        .pulse-subtle { animation: pulse-subtle 3s ease-in-out infinite; }
-        
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            display: flex;
-            animation: marquee 40s linear infinite;
-        }
-        .animate-marquee:hover { animation-play-state: paused; }
-        
-        /* Glassmorphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-        
-        .glass-dark {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-        
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(135deg, #f97316 0%, #dc2626 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Smooth Shadow */
-        .shadow-luxury {
-            box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .shadow-glow {
-            box-shadow: 0 0 40px rgba(249, 115, 22, 0.3);
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 12px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #f97316; border-radius: 6px; }
-        ::-webkit-scrollbar-thumb:hover { background: #ea580c; }
-        
-        /* Hover Effects */
-        .hover-lift {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .hover-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        
-        /* Background Patterns */
-        .bg-grid {
-            background-image: 
-                linear-gradient(to right, rgba(203, 213, 225, 0.15) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(203, 213, 225, 0.15) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-        
-        .bg-gradient-radial {
-            background: radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
-        }
-        
-        /* Enhanced Card */
-        .card-premium {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card-premium::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, #f97316, #dc2626, #f97316);
-            border-radius: inherit;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .card-premium:hover::before {
-            opacity: 1;
-        }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
+        .grid-bg { background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 40px 40px; }
+        .hero-glow { background: radial-gradient(circle at 50% 50%, rgba(251, 146, 60, 0.15) 0%, transparent 50%); }
     </style>
 </head>
-<body class="font-sans bg-white antialiased">
-    
-    <!-- ENHANCED HEADER -->
-    <header class="fixed top-0 w-full glass border-b border-slate-200/50 z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl blur-sm opacity-50"></div>
-                    <div class="relative w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-                        💰
-                    </div>
-                </div>
-                <span class="text-2xl font-black tracking-tight">RedditRevenue</span>
-            </div>
-            <a href="#pricing" class="group px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105">
-                <span class="flex items-center gap-2">
-                    Get Lifetime Access
-                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
-                </span>
-            </a>
-        </div>
-    </header>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-orange-200 selection:text-orange-900">
 
-    <!-- 1. ENHANCED HERO WITH VISUAL DEPTH -->
-    <section class="relative pt-40 pb-28 px-6 bg-gradient-to-br from-slate-50 via-orange-50/30 to-slate-50 bg-grid overflow-hidden">
-        <!-- Decorative Elements -->
-        <div class="absolute top-20 right-10 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-float"></div>
-        <div class="absolute bottom-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" style="animation: float 8s ease-in-out infinite; animation-delay: 1s;"></div>
-        
-        <div class="max-w-6xl mx-auto text-center relative z-10">
-            <div class="inline-block px-5 py-2 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-full text-sm font-bold mb-8 pulse-subtle shadow-lg">
-                <span class="flex items-center gap-2">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-                    </span>
-                    EARLY ADOPTER LIFETIME ACCESS • 34/50 SLOTS LEFT
-                </span>
-            </div>
-            
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.1] tracking-tight text-slate-900">
-                Reddit leads aren't found<br class="hidden md:block">
-                via <span class="relative inline-block">
-                    <span class="text-red-500 relative">keywords</span>
-                    <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
-                        <path d="M2 10C60 3 140 3 198 10" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
-                    </svg>
-                </span>
-            </h1>
-            
-            <h2 class="text-5xl md:text-7xl lg:text-8xl font-black mb-10 leading-[1.1] tracking-tight">
-                They're found via
-                <span class="gradient-text block mt-2">Reasoning.</span>
-            </h2>
-            
-            <p class="text-xl md:text-2xl text-slate-600 mb-12 max-w-4xl mx-auto font-medium leading-relaxed">
-                Stop paying for <strong class="text-slate-900">100+ worthless alerts</strong>. Get the <strong class="text-orange-600">5 people per week</strong> actually ready to buy, with mod-safe replies drafted for you.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center mb-10">
-                <a href="#pricing" class="group px-10 py-5 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-black text-xl shadow-luxury hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1">
-                    <span class="flex items-center gap-3">
-                        Get Lifetime Access - $297
-                        <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </span>
-                </a>
-            </div>
-            
-            <div class="flex items-center justify-center gap-3 text-slate-600">
-                <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="font-semibold">💎 Pay once, use forever</span>
-                <span class="text-slate-300">•</span>
-                <span class="font-semibold">⚡ Setup in 2 minutes</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. ENHANCED COMPARISON SECTION -->
-    <section class="py-28 px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <span class="inline-block px-5 py-2 bg-red-100 text-red-700 rounded-full text-sm font-bold mb-6 uppercase tracking-wider">
-                    👀 The Brutal Truth
-                </span>
-                <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
-                    This is what you're paying<br>
-                    <span class="text-red-600">$200/mo</span> for
-                </h2>
-                <p class="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto">
-                    Keyword alerts vs. Reasoning-AI. The difference is <strong>painful</strong>.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-10 mb-16">
-                <!-- THE OLD WAY - Enhanced -->
-                <div class="group hover-lift bg-white rounded-3xl shadow-xl border-2 border-red-300 overflow-hidden">
-                    <div class="bg-gradient-to-r from-red-600 to-red-700 px-8 py-6 text-white relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-red-500/20 rounded-full -mr-20 -mt-20"></div>
-                        <div class="relative flex items-center gap-4">
-                            <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center text-3xl backdrop-blur-sm">❌</div>
-                            <div>
-                                <div class="font-black text-xl">The "Old" Way</div>
-                                <div class="text-sm text-red-100">Leadmore/Redreach Feed</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="p-8 max-h-[600px] overflow-y-auto space-y-4">
-                        <!-- Noisy alerts with better styling -->
-                        <div class="bg-red-50 border-l-4 border-red-400 rounded-xl p-5 opacity-70 hover:opacity-100 transition-opacity">
-                            <div class="flex items-start gap-4">
-                                <div class="text-3xl">📢</div>
-                                <div class="flex-1">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span class="font-bold text-slate-900">Keyword Alert: "Marketing"</span>
-                                        <span class="px-2 py-1 bg-red-200 text-red-700 rounded text-xs font-bold">LOW VALUE</span>
-                                    </div>
-                                    <div class="text-xs text-slate-500 mb-3">r/funny • 2h ago • u/memegod420</div>
-                                    <div class="text-sm text-slate-700 mb-3 italic">"Lol this marketing team really thought this would work 😂"</div>
-                                    <div class="flex items-center gap-2 text-xs text-red-600 font-bold">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
-                                        </svg>
-                                        IRRELEVANT - Not a buyer
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-red-50 border-l-4 border-red-400 rounded-xl p-5 opacity-70 hover:opacity-100 transition-opacity">
-                            <div class="flex items-start gap-4">
-                                <div class="text-3xl">📢</div>
-                                <div class="flex-1">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span class="font-bold text-slate-900">Keyword Alert: "Marketing"</span>
-                                        <span class="px-2 py-1 bg-red-200 text-red-700 rounded text-xs font-bold">NOISE</span>
-                                    </div>
-                                    <div class="text-xs text-slate-500 mb-3">r/memes • 3h ago • u/funnyuser</div>
-                                    <div class="text-sm text-slate-700 mb-3 italic">"Marketing majors be like: I create value"</div>
-                                    <div class="flex items-center gap-2 text-xs text-red-600 font-bold">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
-                                        </svg>
-                                        IRRELEVANT - Just a meme
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-red-50 border-l-4 border-red-400 rounded-xl p-5 opacity-70 hover:opacity-100 transition-opacity">
-                            <div class="flex items-start gap-4">
-                                <div class="text-3xl">📢</div>
-                                <div class="flex-1">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span class="font-bold text-slate-900">Keyword Alert: "Marketing"</span>
-                                        <span class="px-2 py-1 bg-red-200 text-red-700 rounded text-xs font-bold">WASTE</span>
-                                    </div>
-                                    <div class="text-xs text-slate-500 mb-3">r/personalfinance • 4h ago</div>
-                                    <div class="text-sm text-slate-700 mb-3 italic">"Should I quit my marketing job to become a developer?"</div>
-                                    <div class="flex items-center gap-2 text-xs text-red-600 font-bold">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
-                                        </svg>
-                                        IRRELEVANT - Career advice
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="text-center py-8 text-slate-400 font-semibold">
-                            <div class="text-4xl mb-2">😩</div>
-                            + 97 more useless alerts...
-                        </div>
-                    </div>
-
-                    <div class="bg-gradient-to-r from-red-100 to-red-50 border-t-2 border-red-300 px-8 py-5">
-                        <div class="text-center">
-                            <div class="text-red-700 font-black text-lg mb-1">
-                                100 Alerts • 0 Customers
-                            </div>
-                            <div class="text-red-600 font-bold">
-                                💸 $200/mo Wasted on Credits
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- THE REDDITREVENUE WAY - Enhanced -->
-                <div class="group hover-lift bg-white rounded-3xl shadow-2xl border-2 border-emerald-300 overflow-hidden card-premium">
-                    <div class="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-6 text-white relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20"></div>
-                        <div class="relative flex items-center gap-4">
-                            <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center text-3xl backdrop-blur-sm">✅</div>
-                            <div>
-                                <div class="font-black text-xl">RedditRevenue Way</div>
-                                <div class="text-sm text-orange-100">Reasoning-AI Dashboard</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="p-8">
-                        <!-- High-intent alert with premium styling -->
-                        <div class="relative bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-50 border-2 border-emerald-400 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all">
-                            <div class="absolute top-4 right-4 flex gap-2">
-                                <span class="px-3 py-1.5 bg-emerald-500 text-white rounded-full text-xs font-black shadow-lg">
-                                    INTENT: 10/10
-                                </span>
-                                <span class="px-3 py-1.5 bg-orange-500 text-white rounded-full text-xs font-black shadow-lg animate-pulse">
-                                    🔥 HOT
-                                </span>
-                            </div>
-                            
-                            <div class="flex items-start gap-5 mb-6 mt-8">
-                                <div class="text-5xl">🎯</div>
-                                <div class="flex-1">
-                                    <h3 class="font-black text-2xl mb-3 text-slate-900 leading-tight">
-                                        User in r/SaaS asking for Hootsuite alternative
-                                    </h3>
-                                    
-                                    <div class="flex flex-wrap gap-3 text-xs text-slate-600 mb-5">
-                                        <span class="flex items-center gap-1 font-semibold">
-                                            <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-                                            </svg>
-                                            r/SaaS
-                                        </span>
-                                        <span class="text-slate-300">•</span>
-                                        <span class="flex items-center gap-1 font-semibold">
-                                            <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
-                                            </svg>
-                                            12 min ago
-                                        </span>
-                                        <span class="text-slate-300">•</span>
-                                        <span class="flex items-center gap-1 font-semibold">
-                                            <svg class="w-4 h-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                                            </svg>
-                                            u/marketing_director
-                                        </span>
-                                    </div>
-
-                                    <div class="bg-white rounded-xl p-6 mb-5 border-2 border-slate-200 shadow-inner">
-                                        <div class="text-sm text-slate-700 mb-4 leading-relaxed">
-                                            <strong class="text-orange-600 font-black">Original Post:</strong> "We're paying $500/mo for Hootsuite and barely use it. Just need scheduling for LinkedIn. Any good alternatives that aren't overkill?"
-                                        </div>
-                                        
-                                        <div class="pt-4 border-t-2 border-slate-200">
-                                            <div class="text-xs font-black text-emerald-600 mb-3 uppercase tracking-wider">🧠 AI Reasoning Analysis:</div>
-                                            <div class="grid grid-cols-1 gap-2 text-xs text-slate-700">
-                                                <div class="flex items-center gap-2 p-2 bg-emerald-50 rounded-lg">
-                                                    <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span><strong class="font-bold">Active buyer</strong> - Dissatisfied with current tool</span>
-                                                </div>
-                                                <div class="flex items-center gap-2 p-2 bg-emerald-50 rounded-lg">
-                                                    <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span><strong class="font-bold">Budget confirmed</strong> - Currently paying $500/mo</span>
-                                                </div>
-                                                <div class="flex items-center gap-2 p-2 bg-emerald-50 rounded-lg">
-                                                    <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span><strong class="font-bold">Clear pain point</strong> - Feature bloat, too expensive</span>
-                                                </div>
-                                                <div class="flex items-center gap-2 p-2 bg-emerald-50 rounded-lg">
-                                                    <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span><strong class="font-bold">Decision maker</strong> - Uses "we're paying" language</span>
-                                                </div>
-                                                <div class="flex items-center gap-2 p-2 bg-emerald-50 rounded-lg">
-                                                    <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span><strong class="font-bold">Timeline: Immediate</strong> - Posted 12 minutes ago</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="bg-slate-900 rounded-xl p-6 mb-5 shadow-lg">
-                                        <div class="flex items-center gap-2 text-xs font-black text-emerald-400 mb-3 uppercase tracking-wider">
-                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
-                                            </svg>
-                                            Safe-Vibe Reply (Copy-Paste Ready)
-                                        </div>
-                                        <div class="text-sm text-white leading-relaxed mb-4">
-                                            "We switched from Hootsuite to Buffer last year for the same reason. Way cheaper ($15/mo) and cleaner UI. Analytics are solid for LinkedIn specifically. Happy to DM you our scheduling workflow if helpful!"
-                                        </div>
-                                        <div class="pt-4 border-t border-slate-700">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center gap-2 text-xs text-emerald-400 font-bold">
-                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    Mod-Safe: 98% Confidence
-                                                </div>
-                                                <button class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg text-xs font-bold transition-colors">
-                                                    Copy Reply
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex items-center justify-between pt-5 border-t-2 border-slate-200">
-                                        <div>
-                                            <div class="text-sm text-slate-600 font-semibold mb-1">Estimated Deal Value</div>
-                                            <div class="text-3xl font-black text-emerald-600">$1,200</div>
-                                        </div>
-                                        <button class="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white rounded-xl font-bold transition-all shadow-lg hover:shadow-xl hover:scale-105">
-                                            View Full Thread →
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="text-center mt-10 py-6 text-slate-500 font-semibold">
-                            <div class="text-3xl mb-2">✨</div>
-                            Only showing the 5 highest-intent leads today
-                        </div>
-                    </div>
-
-                    <div class="bg-gradient-to-r from-emerald-100 to-green-50 border-t-2 border-emerald-400 px-8 py-5">
-                        <div class="text-center">
-                            <div class="text-emerald-700 font-black text-lg mb-1">
-                                1 Perfect Lead • Zero Noise
-                            </div>
-                            <div class="text-emerald-600 font-bold">
-                                💎 $297 One-Time Payment
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA after comparison -->
-            <div class="text-center">
-                <div class="inline-block px-8 py-4 bg-gradient-to-r from-slate-100 to-slate-50 rounded-2xl border-2 border-slate-200 mb-8">
-                    <p class="text-2xl text-slate-700 font-black mb-2">
-                        Feel stupid paying $200/mo for noise?
-                    </p>
-                    <p class="text-slate-600">Join the 34 early adopters who locked in lifetime access</p>
-                </div>
-                <div>
-                    <a href="#pricing" class="inline-block px-12 py-6 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-black text-2xl shadow-luxury transition-all transform hover:scale-105 hover:-translate-y-1">
-                        Lock In Lifetime Access - $297 →
-                    </a>
-                    <p class="text-slate-500 text-sm mt-4 font-semibold">⚠️ Switches to $49/mo after the first 50 users</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. ENHANCED BUILDER'S PEDIGREE -->
-    <section class="py-28 px-6 bg-slate-900 text-white relative overflow-hidden">
-        <!-- Decorative Elements -->
-        <div class="absolute top-0 left-0 w-full h-full opacity-5">
-            <div class="absolute top-20 left-20 w-64 h-64 bg-orange-500 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-20 right-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
-        </div>
-        
-        <div class="max-w-5xl mx-auto relative z-10">
-            <div class="text-center mb-16">
-                <span class="inline-block px-5 py-2 bg-orange-500/20 text-orange-400 rounded-full text-sm font-bold mb-6 uppercase tracking-wider border border-orange-500/30">
-                    👨‍💻 Meet the Builder
-                </span>
-                <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    Built by an engineer who<br>
-                    <span class="gradient-text">got tired of the BS</span>
-                </h2>
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-12 items-center bg-slate-800/50 backdrop-blur-sm rounded-3xl p-10 border border-slate-700/50">
-                <!-- Founder Photo - Enhanced -->
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 to-red-600 rounded-3xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="relative w-56 h-56 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-105 transition-transform duration-300">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-7xl font-black text-white">AS</span>
-                        </div>
-                    </div>
-                    <div class="absolute -bottom-3 -right-3 bg-emerald-500 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg flex items-center gap-2">
-                        <span class="relative flex h-3 w-3">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
-                        </span>
-                        Building Live
-                    </div>
-                </div>
-                
-                <!-- Founder Message - Enhanced -->
-                <div class="flex-1">
-                    <h3 class="text-3xl md:text-4xl font-black mb-6">
-                        A note from <span class="text-orange-400">Ayoub</span>
-                    </h3>
-                    <p class="text-lg text-slate-300 mb-5 leading-relaxed">
-                        I'm <strong class="text-white">Ayoub Samil</strong>, a Senior Software Engineer with 3+ years building distributed systems at scale. I got tired of seeing "AI Slop" ruin Reddit communities—tools that spam generic responses and get founders banned.
-                    </p>
-                    <p class="text-lg text-slate-300 mb-6 leading-relaxed">
-                        I'm building this in public to help founders find users without being annoying. The first <strong class="text-orange-400">50 early adopters</strong> get <strong class="text-white">lifetime access</strong> at $297 to help me validate the MVP. You'll get <strong class="text-white">my direct email</strong>, <strong class="text-white">Slack access</strong>, and <strong class="text-white">input on the roadmap</strong>. After slot 50, it switches to $49/mo recurring.
-                    </p>
-                    
-                    <div class="flex flex-wrap gap-4 mb-8">
-                        <a href="https://www.linkedin.com/in/ayoub-samil-5a86bb239/" target="_blank" class="group flex items-center gap-2 px-5 py-3 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 rounded-xl font-bold transition-all">
-                            <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                            <span class="text-blue-300 group-hover:text-white transition-colors">LinkedIn</span>
-                            <svg class="w-4 h-4 text-blue-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                            </svg>
-                        </a>
-                        <a href="https://x.com/samil_ayoub" target="_blank" class="group flex items-center gap-2 px-5 py-3 bg-sky-600/20 hover:bg-sky-600/30 border border-sky-500/30 rounded-xl font-bold transition-all">
-                            <svg class="w-5 h-5 text-sky-400" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
-                            <span class="text-sky-300 group-hover:text-white transition-colors">Twitter</span>
-                            <svg class="w-4 h-4 text-sky-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                            </svg>
-                        </a>
-                    </div>
-                    
-                    <!-- Tech Stack Badge - Enhanced -->
-                    <div class="pt-8 border-t border-slate-700">
-                        <div class="text-xs text-slate-400 uppercase font-bold mb-4 tracking-wider">Built With Enterprise-Grade Tech</div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-4 py-2 bg-slate-700/50 text-slate-200 rounded-lg text-sm font-semibold border border-slate-600/50 hover:bg-slate-700 transition-colors">Python</span>
-                            <span class="px-4 py-2 bg-slate-700/50 text-slate-200 rounded-lg text-sm font-semibold border border-slate-600/50 hover:bg-slate-700 transition-colors">FastAPI</span>
-                            <span class="px-4 py-2 bg-slate-700/50 text-slate-200 rounded-lg text-sm font-semibold border border-slate-600/50 hover:bg-slate-700 transition-colors">GPT-4</span>
-                            <span class="px-4 py-2 bg-slate-700/50 text-slate-200 rounded-lg text-sm font-semibold border border-slate-600/50 hover:bg-slate-700 transition-colors">React</span>
-                            <span class="px-4 py-2 bg-slate-700/50 text-slate-200 rounded-lg text-sm font-semibold border border-slate-600/50 hover:bg-slate-700 transition-colors">AWS</span>
-                            <span class="px-4 py-2 bg-slate-700/50 text-slate-200 rounded-lg text-sm font-semibold border border-slate-600/50 hover:bg-slate-700 transition-colors">Kafka</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. ENHANCED DEEP REASONING SECTION -->
-    <section class="py-28 px-6 bg-gradient-to-br from-white via-blue-50/30 to-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <span class="inline-block px-5 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-bold mb-6 uppercase tracking-wider">
-                    🧠 Under The Hood
-                </span>
-                <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
-                    Keywords are for <span class="text-orange-500">Amateurs</span><br>
-                    Reasoning is for <span class="text-emerald-600">Closers</span>
-                </h2>
-                <p class="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto">
-                    This isn't a ChatGPT wrapper. It's a <strong>purpose-built reasoning engine</strong>.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
-                <!-- Left: The Process -->
-                <div class="space-y-8">
-                    <div class="group flex gap-6 p-6 bg-white rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:shadow-xl transition-all duration-300">
-                        <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg group-hover:scale-110 transition-transform">
-                            1
-                        </div>
-                        <div>
-                            <h3 class="font-black text-2xl mb-3 text-slate-900">Ingestion</h3>
-                            <p class="text-slate-600 text-lg leading-relaxed">
-                                Scrape <strong class="text-slate-900">1,000+ threads per hour</strong> across target subreddits. Real-time monitoring of conversations.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="group flex gap-6 p-6 bg-white rounded-2xl border-2 border-slate-200 hover:border-orange-400 hover:shadow-xl transition-all duration-300">
-                        <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg group-hover:scale-110 transition-transform">
-                            2
-                        </div>
-                        <div>
-                            <h3 class="font-black text-2xl mb-3 text-slate-900">Context Filtering</h3>
-                            <p class="text-slate-600 text-lg leading-relaxed">
-                                We understand if the user is <strong class="text-slate-900">complaining</strong> about a competitor, <strong class="text-slate-900">asking</strong> for a recommendation, or just posting a meme.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="group flex gap-6 p-6 bg-white rounded-2xl border-2 border-slate-200 hover:border-purple-400 hover:shadow-xl transition-all duration-300">
-                        <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg group-hover:scale-110 transition-transform">
-                            3
-                        </div>
-                        <div>
-                            <h3 class="font-black text-2xl mb-3 text-slate-900">Intent Scoring</h3>
-                            <p class="text-slate-600 text-lg leading-relaxed">
-                                Identifies "buying signals" like <strong class="text-slate-900">high-urgency language</strong>, budget indicators, and decision-maker patterns.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="group flex gap-6 p-6 bg-white rounded-2xl border-2 border-slate-200 hover:border-emerald-400 hover:shadow-xl transition-all duration-300">
-                        <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg group-hover:scale-110 transition-transform">
-                            4
-                        </div>
-                        <div>
-                            <h3 class="font-black text-2xl mb-3 text-slate-900">Vibe-Matching</h3>
-                            <p class="text-slate-600 text-lg leading-relaxed">
-                                Drafts replies that mimic the subreddit's specific dialect. <strong class="text-slate-900">Safe-link injection</strong> that avoids spam filters.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Visual Diagram - Enhanced -->
-                <div class="relative">
-                    <div class="absolute -inset-6 bg-gradient-to-r from-orange-500/20 to-blue-500/20 blur-3xl rounded-full"></div>
-                    <div class="relative bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-slate-300 rounded-3xl p-10 shadow-2xl">
-                        <div class="flex items-center justify-between mb-8 pb-6 border-b-2 border-slate-300">
-                            <div class="flex items-center gap-3">
-                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
-                            </div>
-                            <span class="text-sm font-mono text-slate-600 font-bold tracking-wider">REASONING ENGINE</span>
-                            <span class="px-3 py-1 bg-emerald-500 text-white rounded-full text-xs font-black animate-pulse">
-                                LIVE
-                            </span>
-                        </div>
-                        
-                        <div class="space-y-5">
-                            <div class="p-5 bg-white rounded-xl border-2 border-slate-300 shadow-inner">
-                                <div class="text-xs text-slate-500 font-bold mb-2 uppercase">Input Thread:</div>
-                                <div class="text-sm text-slate-700 italic leading-relaxed">
-                                    "Is there a tool for X? My current one is too expensive."
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center gap-4 py-3">
-                                <div class="flex-1 h-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"></div>
-                                <svg class="w-8 h-8 text-orange-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
-                                </svg>
-                                <div class="flex-1 h-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"></div>
-                            </div>
-                            
-                            <div class="p-5 bg-gradient-to-br from-emerald-50 to-green-50 border-2 border-emerald-500 rounded-xl shadow-lg">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    <div class="text-sm font-black text-emerald-700 uppercase">High Intent Detected</div>
-                                </div>
-                                <ul class="text-xs text-slate-700 space-y-2">
-                                    <li class="flex items-center gap-2">
-                                        <div class="w-1.5 h-1.5 bg-emerald-600 rounded-full"></div>
-                                        <span><strong>Budget Signal:</strong> "too expensive"</span>
-                                    </li>
-                                    <li class="flex items-center gap-2">
-                                        <div class="w-1.5 h-1.5 bg-emerald-600 rounded-full"></div>
-                                        <span><strong>Active Search:</strong> "Is there a tool"</span>
-                                    </li>
-                                    <li class="flex items-center gap-2">
-                                        <div class="w-1.5 h-1.5 bg-emerald-600 rounded-full"></div>
-                                        <span><strong>Pain Point:</strong> Current solution inadequate</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="p-5 bg-slate-900 rounded-xl text-emerald-400 text-xs leading-relaxed shadow-lg">
-                                <div class="font-black mb-2 uppercase tracking-wider">Recommendation:</div>
-                                <div class="text-slate-300">
-                                    Mention price difference first. Ask for DM. <strong class="text-emerald-400">Do NOT link yet.</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stats Row -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-8 bg-white rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:shadow-xl transition-all">
-                    <div class="text-5xl font-black text-blue-600 mb-2">99.2%</div>
-                    <div class="text-slate-600 font-semibold">Reasoning Accuracy</div>
-                    <div class="text-xs text-slate-500 mt-2">Tested on 10,000+ threads</div>
-                </div>
-                <div class="text-center p-8 bg-white rounded-2xl border-2 border-slate-200 hover:border-orange-400 hover:shadow-xl transition-all">
-                    <div class="text-5xl font-black text-orange-600 mb-2">1,000+</div>
-                    <div class="text-slate-600 font-semibold">Threads Analyzed/Hour</div>
-                    <div class="text-xs text-slate-500 mt-2">Real-time processing</div>
-                </div>
-                <div class="text-center p-8 bg-white rounded-2xl border-2 border-slate-200 hover:border-emerald-400 hover:shadow-xl transition-all">
-                    <div class="text-5xl font-black text-emerald-600 mb-2">0</div>
-                    <div class="text-slate-600 font-semibold">Bans in 30 Days</div>
-                    <div class="text-xs text-slate-500 mt-2">Mod-safe guarantee</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. ENHANCED PRICING SECTION -->
-    <section id="pricing" class="py-32 px-6 bg-gradient-to-br from-orange-50 via-red-50 to-orange-50 relative overflow-hidden">
-        <!-- Decorative Background -->
-        <div class="absolute inset-0 bg-grid opacity-30"></div>
-        <div class="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
-        
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-block px-5 py-2 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-full text-sm font-bold mb-8 pulse-subtle shadow-xl">
-                <span class="flex items-center gap-2">
-                    <svg class="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                    EARLY ADOPTER EXCLUSIVE
-                </span>
-            </div>
-            
-            <h2 class="text-4xl md:text-6xl font-black mb-6">Help Build the MVP,<br>Get Lifetime Access</h2>
-            <p class="text-2xl text-slate-600 mb-12">Pay once. <strong class="text-slate-900">Use forever.</strong> Then we switch to $49/mo.</p>
-            
-            <div class="relative bg-white p-10 md:p-14 rounded-4xl shadow-luxury border-4 border-orange-500 hover:shadow-2xl transition-all duration-300">
-                <!-- Save Badge -->
-                <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-600 to-red-700 text-white px-10 py-4 rounded-2xl font-black text-lg uppercase shadow-2xl animate-float">
-                    Save $291 vs. Future $49/mo Plan
-                </div>
-                
-                <div class="mt-6 mb-10">
-                    <div class="flex items-baseline justify-center gap-4 mb-4">
-                        <span class="text-4xl text-slate-400 line-through font-bold">$588</span>
-                        <span class="text-7xl md:text-8xl font-black text-slate-900">$297</span>
-                        <span class="text-3xl text-slate-600 font-bold">one-time</span>
-                    </div>
-                    <p class="text-slate-700 font-bold text-xl mb-4">Limited to the first 50 early adopters</p>
-                    <div class="inline-block px-8 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-full text-base font-black shadow-lg pulse-subtle">
-                        🔥 34/50 SLOTS REMAINING
-                    </div>
-                    <p class="text-slate-500 font-bold text-sm mt-4">
-                        ⚠️ After slot 50: Switches to $49/month recurring
-                    </p>
-                </div>
-                
-                <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-3xl p-10 mb-10 border-2 border-slate-200">
-                    <ul class="text-left space-y-5 max-w-2xl mx-auto">
-                        <li class="flex items-start gap-4 text-lg group">
-                            <div class="flex-shrink-0 w-7 h-7 bg-emerald-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <span><strong class="font-black text-slate-900">Unlimited Reasoning-AI Leads</strong> - No credit limits, no usage caps, ever</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-lg group">
-                            <div class="flex-shrink-0 w-7 h-7 bg-emerald-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <span><strong class="font-black text-slate-900">Subreddit-Native Reply Drafter</strong> - Pre-written, mod-safe responses</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-lg group">
-                            <div class="flex-shrink-0 w-7 h-7 bg-emerald-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <span><strong class="font-black text-slate-900">Stripe & CRM Attribution</strong> - Track every Reddit reply to revenue</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-lg border-t-2 border-slate-300 pt-5 group">
-                            <div class="flex-shrink-0 w-7 h-7 bg-orange-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <span class="text-orange-600"><strong class="font-black">Lifetime Access</strong> - All future updates & features included</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-lg group">
-                            <div class="flex-shrink-0 w-7 h-7 bg-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                                </svg>
-                            </div>
-                            <span class="text-blue-600"><strong class="font-black">Direct Founder Access</strong> - My personal email for setup help</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-lg group">
-                            <div class="flex-shrink-0 w-7 h-7 bg-purple-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <span class="text-purple-600"><strong class="font-black">Priority Support Forever</strong> - Skip the line for life</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <button onclick="claimLifetimeSlot()" class="group w-full py-7 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white rounded-3xl font-black text-3xl shadow-2xl hover:shadow-glow transition-all duration-300 hover:scale-105 hover:-translate-y-2 mb-6">
-                    <span class="flex items-center justify-center gap-4">
-                        Get Lifetime Access - $297
-                        <svg class="w-8 h-8 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </span>
-                </button>
-                
-                <p class="text-sm text-slate-500 uppercase font-black tracking-wider mb-8">
-                    🚀 Launching January 2025 • 💯 Full Refund Guarantee
-                </p>
-
-                <!-- Trust Badges -->
-                <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-600 font-semibold pt-8 border-t-2 border-slate-200">
-                    <span class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                        One-Time Payment
-                    </span>
-                    <span class="text-slate-300">•</span>
-                    <span class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                        Stripe Secure
-                    </span>
-                    <span class="text-slate-300">•</span>
-                    <span class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                        30-Day Money Back
-                    </span>
-                </div>
-            </div>
-
-            <!-- Value Comparison Box -->
-            <div class="mt-12 bg-slate-900 border-2 border-orange-500 rounded-3xl p-8 text-white">
-                <h3 class="text-2xl font-black mb-6">💰 Early Adopter vs. Future Pricing</h3>
-                <div class="grid md:grid-cols-2 gap-6 text-left">
-                    <div>
-                        <div class="text-emerald-400 font-bold mb-2">You (Early Adopter)</div>
-                        <div class="space-y-2 text-sm text-slate-300">
-                            <div>One-time: <span class="text-emerald-400 font-bold text-2xl">$297</span></div>
-                            <div>Year 1 cost: <span class="text-emerald-400 font-bold">$297</span></div>
-                            <div>Year 2 cost: <span class="text-emerald-400 font-bold">$0</span></div>
-                            <div>Year 3 cost: <span class="text-emerald-400 font-bold">$0</span></div>
-                            <div class="pt-2 border-t border-slate-700">
-                                <strong>Total (3 years):</strong><br>
-                                <span class="text-emerald-400 font-bold text-2xl">$297</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="text-red-400 font-bold mb-2">Future Users (After Slot 50)</div>
-                        <div class="space-y-2 text-sm text-slate-300">
-                            <div>Monthly: <span class="text-red-400 font-bold text-2xl">$49/mo</span></div>
-                            <div>Year 1 cost: <span class="text-red-400 font-bold">$588</span></div>
-                            <div>Year 2 cost: <span class="text-red-400 font-bold">$588</span></div>
-                            <div>Year 3 cost: <span class="text-red-400 font-bold">$588</span></div>
-                            <div class="pt-2 border-t border-slate-700">
-                                <strong>Total (3 years):</strong><br>
-                                <span class="text-red-400 font-bold text-2xl">$1,764</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-6 pt-6 border-t border-slate-700 text-center">
-                    <p class="text-emerald-400 font-black text-xl">
-                        Early adopters save <span class="text-3xl">$1,467</span> over 3 years
-                    </p>
-                    <p class="text-slate-400 text-sm mt-2">
-                        Plus: You get to shape the product roadmap
-                    </p>
-                </div>
-            </div>
-
-            <!-- Mod-Proof Guarantee - Enhanced -->
-            <div class="mt-16 bg-slate-900 border-2 border-emerald-500 rounded-3xl p-10 hover:shadow-2xl transition-all">
-                <div class="flex flex-col md:flex-row items-center gap-8">
-                    <div class="flex-shrink-0 w-24 h-24 bg-emerald-500/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-                        <svg class="w-12 h-12 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <div class="text-left flex-1">
-                        <div class="font-black text-3xl text-emerald-400 mb-3 flex items-center gap-3">
-                            🛡️ Mod-Proof Guarantee
-                        </div>
-                        <p class="text-slate-300 text-xl leading-relaxed">
-                            Every reply is pre-vetted for community vibe. <strong class="text-white">If you get banned using our humanized replies, we refund your entire payment.</strong> No questions asked.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOCIAL PROOF - Enhanced -->
-    <section class="py-28 px-6 bg-white border-t-2 border-slate-200">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black mb-4">The Numbers Don't Lie</h2>
-                <p class="text-xl text-slate-600">Real metrics from real founders</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group text-center p-10 bg-gradient-to-br from-slate-50 to-white rounded-3xl border-2 border-slate-200 hover:border-orange-400 hover:shadow-xl transition-all hover:-translate-y-2">
-                    <div class="text-6xl font-black text-orange-600 mb-3 group-hover:scale-110 transition-transform">-83%</div>
-                    <div class="text-slate-700 font-bold text-lg mb-2">Lower lifetime cost</div>
-                    <div class="text-slate-500 text-sm">vs. annual subscriptions</div>
-                </div>
-
-                <div class="group text-center p-10 bg-gradient-to-br from-slate-50 to-white rounded-3xl border-2 border-slate-200 hover:border-orange-400 hover:shadow-xl transition-all hover:-translate-y-2">
-                    <div class="text-6xl font-black text-orange-600 mb-3 group-hover:scale-110 transition-transform">15 hrs</div>
-                    <div class="text-slate-700 font-bold text-lg mb-2">Per week saved</div>
-                    <div class="text-slate-500 text-sm">On manual Reddit monitoring</div>
-                </div>
-
-                <div class="group text-center p-10 bg-gradient-to-br from-slate-50 to-white rounded-3xl border-2 border-slate-200 hover:border-orange-400 hover:shadow-xl transition-all hover:-translate-y-2">
-                    <div class="text-6xl font-black text-orange-600 mb-3 group-hover:scale-110 transition-transform">10/10</div>
-                    <div class="text-slate-700 font-bold text-lg mb-2">Only highest-intent leads</div>
-                    <div class="text-slate-500 text-sm">Surface in your dashboard</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WHY EARLY ADOPTER PROGRAM -->
-    <section class="py-28 px-6 bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-50">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="inline-block px-5 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-bold mb-6 uppercase tracking-wider">
-                    🤝 The Early Adopter Program
-                </span>
-                <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
-                    Why Only 50 Lifetime Slots?
-                </h2>
-                <p class="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto">
-                    I'm building this product <strong>with</strong> you, not <strong>for</strong> you.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white rounded-3xl p-10 border-2 border-slate-200 hover:border-blue-400 hover:shadow-xl transition-all">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg">
-                        🎯
-                    </div>
-                    <h3 class="text-2xl font-black mb-4 text-slate-900">MVP Validation Partners</h3>
-                    <p class="text-slate-600 text-lg leading-relaxed mb-4">
-                        I need <strong class="text-slate-900">real feedback</strong> from real founders using the product daily. You're not just a customer—you're helping build the product.
-                    </p>
-                    <ul class="space-y-3 text-slate-600">
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Weekly feedback surveys</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Direct Slack channel with me</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Vote on roadmap priorities</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-white rounded-3xl p-10 border-2 border-slate-200 hover:border-orange-400 hover:shadow-xl transition-all">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg">
-                        💰
-                    </div>
-                    <h3 class="text-2xl font-black mb-4 text-slate-900">After Slot 50: Recurring Model</h3>
-                    <p class="text-slate-600 text-lg leading-relaxed mb-4">
-                        Once the MVP is validated with the first 50 users, the product switches to <strong class="text-slate-900">$49/month recurring</strong> for all new customers.
-                    </p>
-                    <div class="bg-orange-50 border-2 border-orange-200 rounded-xl p-5">
-                        <div class="text-sm font-bold text-orange-900 mb-2">Future Pricing (Post-Launch)</div>
-                        <div class="text-3xl font-black text-orange-600 mb-2">$49/mo</div>
-                        <div class="text-xs text-orange-700">
-                            = $588/year recurring forever
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-10 text-white border-2 border-slate-700">
-                <div class="flex flex-col md:flex-row items-center gap-8">
-                    <div class="flex-shrink-0">
-                        <div class="w-20 h-20 bg-emerald-500/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-                            <svg class="w-10 h-10 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-black mb-3 text-emerald-400">Your Lifetime Lock-In Guarantee</h3>
-                        <p class="text-slate-300 text-lg leading-relaxed">
-                            As an early adopter, your <strong class="text-white">$297 one-time payment is locked in forever</strong>. Even if I raise prices to $99/mo or $149/mo in the future, you'll never pay another cent. You're grandfathered in for life.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FINAL CTA - Enhanced -->
-    <section class="py-28 px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-20 left-20 w-96 h-96 bg-orange-500 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-20 right-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl" style="animation: float 6s ease-in-out infinite; animation-delay: 1s;"></div>
-        </div>
-        
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <h2 class="text-4xl md:text-6xl font-black mb-8">
-                Last Chance for<br>
-                <span class="text-orange-400">Early Adopter Pricing</span>
-            </h2>
-            <p class="text-2xl md:text-3xl text-slate-300 mb-6 font-bold">
-                34 lifetime slots left at <span class="text-orange-400">$297 one-time</span>
-            </p>
-            <p class="text-xl text-slate-400 mb-12">
-                After slot 50, everyone pays $49/month recurring
-            </p>
-            <a href="#pricing" class="inline-block px-14 py-7 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white rounded-3xl font-black text-3xl shadow-2xl hover:shadow-glow transition-all transform hover:scale-105 hover:-translate-y-2">
-                Claim Early Adopter Access →
-            </a>
-        </div>
-    </section>
-
-    <!-- LIVE FEED - Enhanced -->
-    <div class="bg-slate-900 border-y border-slate-700 py-5 overflow-hidden">
-        <div class="flex gap-12 animate-marquee whitespace-nowrap text-xs font-bold text-slate-400 uppercase tracking-widest">
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
-                🔥 Recently Found: High-Intent Lead in r/MarketingAutomation
+    <div class="bg-slate-900 text-white text-xs md:text-sm font-bold py-3 px-4 text-center sticky top-0 z-50 shadow-lg">
+        <div class="flex items-center justify-center gap-2">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
             </span>
-            <span>•</span>
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                ✅ Reasoning Engine: 99.2% Accuracy on last 500 threads
-            </span>
-            <span>•</span>
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                🚀 14 Founders Joined in the last 24 hours
-            </span>
-            <span>•</span>
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
-                🔥 Buyer seeking 'Reddit Ads' alternative in r/SaaS
-            </span>
-            <span>•</span>
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                ✅ Mod-Safe Replies: 0 bans in 30 days
-            </span>
-            <span>•</span>
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
-                🎯 Decision-maker seeking 'Leadmore alternative' in r/GrowthHacking
-            </span>
-            <span>•</span>
-            <!-- Duplicate for seamless loop -->
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
-                🔥 Recently Found: High-Intent Lead in r/MarketingAutomation
-            </span>
-            <span>•</span>
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                ✅ Reasoning Engine: 99.2% Accuracy on last 500 threads
-            </span>
-            <span>•</span>
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                🚀 14 Founders Joined in the last 24 hours
-            </span>
-            <span>•</span>
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
-                🔥 Buyer seeking 'Reddit Ads' alternative in r/SaaS
-            </span>
-            <span>•</span>
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                ✅ Mod-Safe Replies: 0 bans in 30 days
-            </span>
-            <span>•</span>
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
-                🎯 Decision-maker seeking 'Leadmore alternative' in r/GrowthHacking
-            </span>
-            <span>•</span>
+            <span>BATCH 1 CLOSING:</span>
+            <span class="text-slate-300 font-normal">Only 6 Lifetime Accounts left before price jumps to $99 per month.</span>
         </div>
     </div>
 
-    <!-- Footer - Enhanced -->
-    <footer class="py-12 px-6 bg-slate-900 text-slate-400 border-t border-slate-800">
-        <div class="max-w-6xl mx-auto text-center">
-            <div class="flex items-center justify-center gap-3 mb-6">
-                <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl blur-sm opacity-50"></div>
-                    <div class="relative w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-                        💰
-                    </div>
-                </div>
-                <span class="text-2xl font-black text-white">RedditRevenue</span>
+    <nav class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center relative z-40">
+        <div class="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+            <div class="bg-gradient-to-br from-orange-500 to-red-600 text-white w-8 h-8 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/30">R</div>
+            <span>RedditRevenue</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <a href="#how-it-works" class="hidden md:block text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors">How it works</a>
+            <a href="#comparison" class="hidden md:block text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors">The Difference</a>
+            <a href="mailto:your-email@domain.com" class="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm font-bold hover:bg-slate-50 transition-colors shadow-sm">
+                Contact Founder
+            </a>
+        </div>
+    </nav>
+
+    <section class="relative pt-16 pb-24 md:pt-24 md:pb-32 px-6 overflow-hidden">
+        <div class="absolute inset-0 grid-bg opacity-[0.4] -z-10"></div>
+        <div class="absolute inset-0 hero-glow -z-10"></div>
+
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-white border border-slate-200 px-3 py-1 rounded-full shadow-sm mb-8">
+                <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded uppercase tracking-wide">New Engine</span>
+                <span class="text-xs font-medium text-slate-600">Deep Reasoning v2 is now live</span>
             </div>
-            <p class="text-slate-500 mb-4 font-medium">
-                Stop paying for AI slop. Start closing Reddit leads.
+
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-slate-900 mb-8 leading-[0.95]">
+                Stop paying for<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">Reddit Noise.</span>
+            </h1>
+
+            <p class="text-xl md:text-2xl text-slate-600 font-medium max-w-2xl mx-auto mb-10 leading-relaxed">
+                Keyword alerts send you 100 memes. We send you the <span class="text-slate-900 font-bold underline decoration-orange-500 decoration-2 underline-offset-4">5 people per week</span> who are actively asking to buy your product.
             </p>
-            <p class="text-slate-600 text-sm mb-6">
-                Built by <a href="https://www.linkedin.com/in/ayoub-samil-5a86bb239/" target="_blank" class="text-orange-500 hover:text-orange-400 font-semibold transition-colors">Ayoub Samil</a> • Based in Agadir, Morocco
-            </p>
-            <div class="flex items-center justify-center gap-6 text-sm">
-                <a href="/privacy.html" class="text-slate-500 hover:text-orange-500 transition-colors">Privacy Policy</a>
-                <span class="text-slate-700">•</span>
-                <a href="/terms.html" class="text-slate-500 hover:text-orange-500 transition-colors">Terms of Service</a>
-                <span class="text-slate-700">•</span>
-                <a href="mailto:support@yourdomain.com" class="text-slate-500 hover:text-orange-500 transition-colors">Contact</a>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                <a href="#pricing" class="group relative px-8 py-4 bg-slate-900 text-white rounded-xl font-bold text-lg shadow-xl shadow-slate-900/20 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                    Get Lifetime Access - $297
+                    <div class="absolute -top-3 -right-3 bg-red-600 text-white text-[10px] font-black px-2 py-1 rounded-full shadow-md animate-bounce">SAVE $588/yr</div>
+                </a>
+                <a href="#comparison" class="px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all shadow-sm">
+                    See the difference
+                </a>
+            </div>
+
+            <div class="flex items-center justify-center gap-2 text-sm font-semibold text-slate-500">
+                <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                34 Indie Founders joined this week
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        // ========================================
-        // PRODUCTION EMAIL COLLECTION
-        // ========================================
-        
-        // OPTION 1: TALLY FORM (RECOMMENDED - EASIEST)
-        // Setup: https://tally.so → Create form → Replace YOUR_FORM_ID below
-        function claimLifetimeSlot() {
-            // Open Tally form in popup
-            window.open('https://tally.so/r/KYe7zD', 'Early Adopter Signup', 'width=600,height=800');
-            
-            // Track the click in analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'early_adopter_click', {
-                    'event_category': 'conversion',
-                    'event_label': 'pricing_cta',
-                    'value': 297
-                });
-            }
-        }
-        
-        // OPTION 2: EMBEDDED FORM (Alternative)
-        // Uncomment this if you prefer an inline form instead
-        /*
-        function claimLifetimeSlot() {
-            // Show a modal with embedded form
-            const modal = document.createElement('div');
-            modal.innerHTML = `
-                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; display: flex; align-items: center; justify-content: center;">
-                    <div style="background: white; padding: 40px; border-radius: 20px; max-width: 500px; width: 90%;">
-                        <h2 style="font-size: 28px; font-weight: 900; margin-bottom: 20px;">🎯 Claim Your Spot</h2>
-                        <p style="margin-bottom: 20px; color: #64748b;">Join the first 50 early adopters and get lifetime access for $297.</p>
+    <section id="how-it-works" class="py-24 bg-white border-y border-slate-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-orange-600 font-bold text-sm tracking-widest uppercase mb-2">The Process</p>
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900">3 Steps to Revenue</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center mb-6 group-hover:bg-orange-50 group-hover:border-orange-100 transition-all duration-300 shadow-sm">
+                        <span class="text-3xl">🎯</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">1. Set Targets</h3>
+                    <p class="text-slate-500 leading-relaxed">Choose the subreddits where your buyers hang out. We'll handle the 24/7 monitoring.</p>
+                </div>
+
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center mb-6 group-hover:bg-orange-50 group-hover:border-orange-100 transition-all duration-300 shadow-sm relative">
+                        <span class="text-3xl">🧠</span>
+                        <div class="absolute -top-2 -right-2 bg-orange-600 text-white text-[10px] font-black px-2 py-0.5 rounded-full">AI CORE</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">2. Filter Noise</h3>
+                    <p class="text-slate-500 leading-relaxed">Our reasoning engine discards the 99% of "slop" and memes, identifying only high-intent buying signals.</p>
+                </div>
+
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center mb-6 group-hover:bg-orange-50 group-hover:border-orange-100 transition-all duration-300 shadow-sm">
+                        <span class="text-3xl">🤝</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">3. Close Deals</h3>
+                    <p class="text-slate-500 leading-relaxed">Get a daily digest of perfect leads with mod-safe, humanized drafts ready to be sent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-white border border-slate-200 rounded-[2.5rem] p-8 md:p-12 shadow-sm relative overflow-hidden">
+                <div class="absolute top-10 right-12 text-slate-100 text-8xl font-serif select-none italic opacity-50">"</div>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-center relative z-10">
+                    <div class="shrink-0">
+                        <img src="YOUR_PHOTO_URL.jpg" alt="Founder" class="w-32 h-32 rounded-2xl object-cover shadow-lg border-4 border-white rotate-3 group-hover:rotate-0 transition-transform bg-slate-200">
+                    </div>
+
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-black text-slate-900 mb-1">Built by [Your Name]</h3>
+                        <p class="text-orange-600 font-bold text-sm uppercase tracking-widest mb-4">Senior Software Engineer</p>
                         
-                        <!-- Replace with your actual form service embed code -->
-                        <iframe src="https://tally.so/embed/YOUR_FORM_ID?hideTitle=1" width="100%" height="400" frameborder="0"></iframe>
-                        
-                        <button onclick="this.closest('div').parentElement.remove()" style="margin-top: 20px; padding: 10px 20px; background: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer;">Close</button>
+                        <p class="text-slate-600 italic leading-relaxed mb-6 text-lg">
+                            "I spent months manually scouring subreddits for leads, only to realize that 99% of 'keyword alerts' are just noise. I built RedditRevenue to solve my own problem: I wanted the 5 high-intent buyers, not 500 memes. I'm personally supporting every batch-1 founder to ensure this tool grows your business."
+                        </p>
+
+                        <div class="flex items-center gap-4">
+                            <a href="YOUR_TWITTER_URL" target="_blank" class="flex items-center gap-2 text-slate-400 hover:text-slate-900 transition-colors font-bold text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                Twitter
+                            </a>
+                            <a href="YOUR_LINKEDIN_URL" target="_blank" class="flex items-center gap-2 text-slate-400 hover:text-slate-900 transition-colors font-bold text-sm border-l border-slate-200 pl-4">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
                     </div>
                 </div>
-            `;
-            document.body.appendChild(modal);
-        }
-        */
+            </div>
+        </div>
+    </section>
 
-        // ========================================
-        // SMOOTH SCROLL & ANIMATIONS
-        // ========================================
-        
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+    <section id="comparison" class="py-24 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black mb-4">The "Keyword" Trap vs. Reasoning</h2>
+                <p class="text-slate-500 text-lg">Why paying for keyword scrapers is burning your budget.</p>
+            </div>
 
-        // Fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-16">
+                <div class="relative group opacity-70 hover:opacity-100 transition-opacity">
+                    <div class="bg-slate-50 border border-red-100 rounded-2xl p-8">
+                        <div class="flex items-center justify-between mb-6 text-red-600">
+                            <h3 class="font-bold flex items-center gap-2">⚠️ Standard Alert Tool</h3>
+                            <span class="text-xs font-mono">142 ALERTS TODAY</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-xl border-l-4 border-red-300 shadow-sm text-sm italic text-slate-500">"I hate SaaS companies that charge monthly."</div>
+                            <div class="bg-white p-4 rounded-xl border-l-4 border-red-300 shadow-sm text-sm italic text-slate-500">"Check out this SaaS meme lol"</div>
+                        </div>
+                        <p class="mt-6 text-center text-red-600 font-bold">Outcome: 2 hours wasted reading noise.</p>
+                    </div>
+                </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fade-in 0.8s ease-out forwards';
-                }
-            });
-        }, observerOptions);
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl blur opacity-25 animate-pulse-slow"></div>
+                    <div class="relative bg-white border border-orange-100 rounded-2xl p-8 shadow-2xl">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-bold text-slate-900 flex items-center gap-2">🚀 RedditRevenue AI</h3>
+                            <span class="text-xs font-mono text-emerald-600 font-bold bg-emerald-50 px-2 py-1 rounded">1 IDEAL LEAD</span>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-xl border border-orange-200 mb-4">
+                            <p class="text-xs font-bold text-slate-400 mb-2">r/entrepreneur</p>
+                            <p class="text-sm font-medium text-slate-800 mb-3 italic">"Hootsuite is too bloated for us. Is there a lean alternative for small teams?"</p>
+                            <div class="bg-slate-900 rounded-lg p-3 font-mono text-[10px] text-emerald-400">
+                                > Analysis: Active Switcher Intent (High)<br>
+                                > Status: High Confidence Lead
+                            </div>
+                        </div>
+                        <p class="mt-6 text-emerald-600 font-black text-center">Outcome: 1 High-Ticket Customer Acquired.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+    <section id="pricing" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-10 right-10 w-96 h-96 bg-orange-600/20 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-10 left-10 w-96 h-96 bg-red-600/10 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div class="max-w-3xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">Simple, Honest Pricing.</h2>
+                <p class="text-slate-400 text-xl">One time payment. No monthly bleeding.</p>
+            </div>
+
+            <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1.5 bg-slate-800">
+                    <div class="bg-gradient-to-r from-orange-500 to-red-600 h-full w-[88%]"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+                    <div>
+                        <h3 class="text-2xl font-bold">Lifetime Founder</h3>
+                        <div class="text-xs text-orange-400 font-bold mt-2 font-mono uppercase tracking-widest">44/50 Slots Claimed</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-sm text-slate-500 line-through font-medium">$588/yr</div>
+                        <div class="text-5xl font-black text-white tracking-tight">$297</div>
+                    </div>
+                </div>
+
+                <div class="space-y-4 mb-10">
+                    <div class="flex items-center gap-4 text-slate-300">
+                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">✓</div>
+                        <span>Unlimited AI Reasoning Engine Access</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-slate-300">
+                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">✓</div>
+                        <span>Manual "Concierge" Onboarding Support</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-slate-300">
+                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">✓</div>
+                        <span>Mod-Safe Reply Humanizer</span>
+                    </div>
+                </div>
+
+                <a href="https://buy.stripe.com/test_eVq8wRgIlfPC4sqgeN2cg00" class="block w-full text-center py-5 bg-white text-slate-900 rounded-xl text-xl font-black hover:bg-orange-500 hover:text-white transition-all transform hover:-translate-y-1 shadow-2xl">
+                    Secure Lifetime Access
+                </a>
+                
+                <p class="text-center text-xs text-slate-500 mt-6 font-bold uppercase tracking-widest flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9V7h2v5z"/></svg>
+                    14-Day "No Noise" Refund Guarantee
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-3xl mx-auto">
+        <h3 class="text-2xl font-black mb-8 text-center uppercase tracking-widest">The Fine Print</h3>
+        <div class="space-y-4">
+            <details class="group bg-white border border-slate-200 rounded-xl p-4 cursor-pointer hover:border-orange-200 transition-colors">
+                <summary class="flex justify-between items-center font-bold text-slate-800 list-none">
+                    Will this get my Reddit account banned?
+                    <span class="transition-transform group-open:rotate-180">▼</span>
+                </summary>
+                <p class="mt-3 text-slate-600 text-sm leading-relaxed">No. We don't auto-post. We find the lead and draft the reply. You stay in control of your account, making it 100% compliant with Reddit's TOS.</p>
+            </details>
+            <details class="group bg-white border border-slate-200 rounded-xl p-4 cursor-pointer hover:border-orange-200 transition-colors">
+                <summary class="flex justify-between items-center font-bold text-slate-800 list-none">
+                    I don't see a Login button. How do I access it?
+                    <span class="transition-transform group-open:rotate-180">▼</span>
+                </summary>
+                <p class="mt-3 text-slate-600 text-sm leading-relaxed">We are currently in the <strong>Founder Batch</strong>. This means the founder (me) manually tunes the AI instance for you to ensure you get the best leads possible while the public dashboard is being finalized.</p>
+            </details>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 py-16 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="flex items-center justify-center gap-2 font-black text-slate-900 mb-4">
+                <div class="w-6 h-6 bg-orange-600 rounded text-white flex items-center justify-center text-[10px]">R</div>
+                RedditRevenue
+            </div>
+            <p class="text-slate-500 text-sm mb-8 font-medium">Built by an Indie Hacker for Founders who hate spam.</p>
+            
+            <div class="flex justify-center gap-6 text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">
+                <a href="terms.html" class="hover:text-slate-900 transition-colors">Terms</a>
+                <a href="privacy.html" class="hover:text-slate-900 transition-colors">Privacy</a>
+                <a href="mailto:support@redditrevenue.com" class="hover:text-slate-900 transition-colors">Support</a>
+            </div>
+            <p class="text-[10px] text-slate-300">© 2025 RedditRevenue. Not affiliated with Reddit Inc.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
